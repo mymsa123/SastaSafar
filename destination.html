@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#header").load("user_header.html");
+            $("#footer").load("user_footer.html");
+
+        });
+    </script>
+    <link rel="stylesheet" href="destination.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header id="header"></header>
+    <section id="searchbar">
+        <input class="input" id="search" name="text" placeholder="Search..." type="search">
+    </section>
+    <section id="first">
+        <div id="side">
+            <div id="sortingdata">
+                <p>Sort By</p>
+                <select name="sorting" id="sorting">
+                    <option value="">Price</option>
+                    <option value="asc">Low To High</option>
+                    <option value="desc">High To Low</option>
+                </select>
+            </div>
+            <div id="filteringdata">
+                <p>Filter By</p>
+                <div id="pricefilter">
+                    <p>Price</p>
+                    <div><span><input type="radio" name="price_radio" id="first_radio" value="3000,5000"></span>
+                        3,000 To 5,000</div>
+                    <div><span><input type="radio" name="price_radio" id="second_radio" value="5000,10000"></span>
+                        5,000 To 10,000</div>
+                    <div><span><input type="radio" name="price_radio" id="third_radio" value="10000,20000"></span>
+                        10,000 To 20,000</div>
+                    <div><span><input type="radio" name="price_radio" id="fourth_radio" value="20000,Above"></span>
+                        20,000 Above</div>
+                </div>
+                <div id="destinationfilter">
+                    <!-- <div><span><input type="radio" name="destination_radio" id="first_destination"></span>
+                        Maharashtra</div> -->
+
+                </div>
+                <!-- <div id="durationfilter">
+
+                     <div><span><input type="radio" name="duration_radio" id="first_duration"></span>
+                        1 Night / 1 Day</div>
+                      
+                </div> -->
+                <div id="clearfilter">
+                    <div class="">
+                        <button class="btn" onclick="ClearFilter()">Clear Filter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="content">
+           
+        </div> -->
+
+    </section>
+
+
+    <!-- product div -->
+    <div id="product_div">
+        <div class="filter_head">
+            <h3 id="noofcards"></h3>
+            <button id="filter"><i class="fa-solid fa-filter"></i></button>
+        </div>
+
+        <div id="product_container">
+            <!-- append the product card here -->
+        </div>
+
+        <div class="pagination"></div>
+    </div>
+
+    <footer id="footer"></footer>
+</body>
+<script>
+    const API = "https://trypot-nation-dkah.onrender.com/packages";
+    let APIData = JSON.parse(localStorage.getItem('APIData')) || [];
+    let content = document.querySelector('#content');
+    let img_slide = document.querySelector(".img_slide");
+    let searchbar = document.querySelector("#search");
+    let sorting = document.querySelector("#sorting");
+
+    let first_radio = document.querySelector("#first_radio");
+    let second_radio = document.querySelector("#second_radio");
+    let third_radio = document.querySelector("#third_radio");
+    let fourth_radio = document.querySelector("#fourth_radio");
+    let price_radio = document.querySelector('input[name="price_radio"]');
+    let pricefilter = document.querySelector("#pricefilter");
+    let destinationfilter = document.querySelector("#destinationfilter");
+    let durationfilter = document.querySelector("#durationfilter");
+
+    //from hotels page
+
+    let mainSection = document.getElementById("product_container")
+    let noofcards = document.getElementById("noofcards");
+
+    let currentPage = 1;
+    let rowsPerPage = 6;
+
+    //calling fetch data function
+     fetchdata();
+
+     async function fetchdata(page = 1) {
+    try {
+        let res = await fetch("https://mock-api-hotels.onrender.com/hotels")
+        let data = await res.json();
+        console.log(data);
+        currentPage = page;
+        display(data);
+        
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+
+// display function
+function display(data) {
+    let startIndex = (currentPage - 1) * rowsPerPage;
+    let endIndex = startIndex + rowsPerPage;
+    let paginatedData = data.slice(startIndex, endIndex);
+
+    mainSection.innerHTML = "";
+
+    // function to increaseor decrease noOfCards. of guests
+    let count = 1;
+    increase_guest.addEventListener("click", function () {
+        count++;
+        total_guest.textContent = count;
+    })
+
+    decrease_guest.addEventListener("click", function () {
+        if (count > 1) {
+            count--;
+            total_guest.textContent = count;
+        }
+    })
+
+    noofcards.textContent = `${data.length} Results`;
+    let cardlist = document.createElement("div")
+    cardlist.className = "card-list";
+
+    paginatedData.forEach((el) => {
+        let card = createcard(el);
+        cardlist.append(card);
+        mainSection.append(cardlist);
+    })
+
+    let totalPages = Math.ceil(data.length / rowsPerPage);
+
+    let pagination = document.querySelector(".pagination");
+    pagination.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i++) {
+        let link = document.createElement("a");
+        link.href = "#";
+        link.innerText = i;
+        if (i === currentPage) {
+            link.classList.add("active");
+        }
+        link.addEventListener("click", function () {
+            currentPage = i;
+            fetchdata(i);
+        });
+        pagination.appendChild(link);
+    }
+}
+
+// createcard function 
+function createcard(el) {
+    let card = document.createElement("div");
+    card.className = "card";
+
+    let img = document.createElement("img")
+    img.src = el.image;
+    img.className = "hotelImg";
+
+    let carditem = document.createElement("div")
+    carditem.className = "card-item";
+
+    let h3 = document.createElement("h3")
+    h3.style.minHeight = "50px";
+    h3.textContent = el.name;
+
+    let location = document.createElement("p")
+    location.textContent = el.location
+    location.style.margin = "10px";
+
+    let rating = document.createElement("p");
+    rating.textContent = `★ ${el.review}`;
+
+    let h1 = document.createElement("h1")
+    h1.textContent = `₹ ${el.price}`;
+    h1.style.display = "inline-block";
+
+    let span = document.createElement("span");
+    span.textContent = " /Night";
+    span.className = "span1";
+
+    let divprice = document.createElement("div")
+    divprice.className = "divprice";
+
+    divprice.append(h1, span);
+
+    card.addEventListener('click', () => {
+        window.location.href = './individual.html';
+        hoteldata.push({ ...el })
+        localStorage.setItem("hotel", JSON.stringify(hoteldata))
+    });
+
+    carditem.append(h3, location, rating, divprice)
+    card.append(img, carditem)
+    return card;
+}
+
+
+
+
+
+
+
+    DisplayDuration(APIData);
+    DisplayDestination(APIData);
+
+    fetchData(API);
+    
+    searchbar.addEventListener('input', () => {
+        if (searchbar.value !== "") {
+            let temp = `${API}?title_like=${searchbar.value}`;
+            fetchData(temp);
+            console.log(temp);
+        } else {
+            DisplayData(APIData);
+        }
+    })
+    sorting.addEventListener('change', () => {
+        if (sorting.value !== "") {
+            // let temp = `${API}?_sort=price&_order=${sorting.value}`;
+            // fetchData(temp);
+            // console.log(temp);
+            if (sorting.value == "asc") {
+                let sorted = APIData.sort((a, b) => a.price - b.price);
+                DisplayData(sorted);
+            } else if (sorting.value == "desc") {
+                let sorted = APIData.sort((a, b) => b.price - a.price);
+                DisplayData(sorted);
+            }
+        } else {
+            APIData(API);
+        }
+    })
+
+
+    // function DisplayDuration(data) {
+    //     durationfilter.innerHTML = "<p>Duration</p>";
+    //     let alreadydata = [];
+    //     let count = 0;
+    //     data.forEach((ele) => {
+    //         if (alreadydata.includes(ele.duration)) {
+    //             return;
+    //         } else {
+    //             count++;
+    //             alreadydata.push(ele.duration);
+    //             durationfilter.append(CreateDurationList(ele, count));
+    //         }
+    //     })
+    // }
+
+    function DisplayDestination(data) {
+        destinationfilter
+        destinationfilter.innerHTML = "<p>Destination</p>";
+        let alreadydata = [];
+        let count = 0;
+        data.forEach((ele) => {
+            if (alreadydata.includes(ele.destination)) {
+                return;
+            } else {
+                count++;
+                alreadydata.push(ele.destination);
+                destinationfilter.append(CreateDestinationList(ele, count));
+            }
+        })
+    }
+    function CreateDestinationList(ele, ind) {
+        let div = document.createElement('div');
+        div.innerHTML = `<span><input type="radio" name="destination_radio" value="${ele.destination}" id="destination${ind}"></span>
+                        ${ele.destination}`;
+
+        return div;
+    }
+
+
+
+
+    //to clear filter
+
+    function ClearFilter() {
+        window.location.reload();
+    }
+
+
+    //
+
+
+    pricefilter.addEventListener('click', (event) => {
+        
+
+        if (event.target.value !== undefined) {
+            let temp = event.target.value;
+            temp = temp.split(",");
+            if (temp[1] === "Above") {
+                let filtered = APIData.filter((ele) => {
+                    if (ele.price >= temp[0]) {
+                        return true;
+                    }
+                });
+                DisplayData(filtered);
+            } else {
+                let filtered = APIData.filter((ele) => {
+                    if (ele.price >= temp[0] && ele.price <= temp[1]) {
+                        return true;
+                    }
+                });
+                DisplayData(filtered);
+            }
+
+        }
+    });
+
+    destinationfilter.addEventListener('click', (event) => {
+        if (event.target.value !== undefined) {
+            // console.log(event.target.value);
+            let filtered = APIData.filter((ele) => {
+                if (ele.destination === event.target.value) {
+                    return true;
+                }
+            });
+            DisplayData(filtered);
+        }
+    });
+
+
+    //
+
+
+    if (content.innerHTML == " ") {
+        content.innerHTML = "<h1>No Data Found!</h1>";
+    }
+</script>
+
+</html>
+
