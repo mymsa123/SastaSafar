@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .carousel {
+      position: relative;
+      width: 500px;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      flex-shrink: 0;
+      width: 100%;
+      display: flex;
+    }
+
+    .carousel-item img {
+      width: 50%;
+      height: auto;
+    }
+  </style>
+  <body>
+
+  </body>
+</html>
+<script>
+  const carouselInner = document.querySelector(".carousel-inner");
+  const carouselItems = document.querySelectorAll(".carousel-item");
+  const carouselItemWidth = carouselItems[0].offsetWidth;
+  let currentIndex = 0;
+  const prevButton = document.querySelector(".carousel-prev");
+  const nextButton = document.querySelector(".carousel-next");
+
+  function slideNext() {
+    if (currentIndex === carouselItems.length - 1) {
+      currentIndex = 0;
+    } else {
+      currentIndex = currentIndex + 0.5;
+    }
+    carouselInner.style.transform = `translateX(-${
+      currentIndex * carouselItemWidth
+    }px)`;
+  }
+
+  function slidePrev() {
+    if (currentIndex === 0) {
+      currentIndex = carouselItems.length - 1;
+    } else {
+      currentIndex--;
+    }
+    carouselInner.style.transform = `translateX(-${
+      currentIndex * carouselItemWidth
+    }px)`;
+  }
+
+  nextButton.addEventListener("click", slideNext);
+  prevButton.addEventListener("click", slidePrev);
+
+  // setInterval(slideNext, 5000);
+</script>
