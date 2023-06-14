@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* color: #433d66;; */
+}
+
+button{
+    cursor: pointer;
+}
+
+.navbar{
+    background: linear-gradient(-90deg , #e5e1ff , #d0c8ff);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 10px 50px;
+    background: linear-gradient(-90deg , #67628d , #4f467d);
+    display: flex;
+    gap: 20px;
+    background: #183282;
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+.nav-menu{
+    display: flex;
+    gap: 20px;
+}
+.logo{
+    font-size: 25px;
+    font-family: cursive;
+    color:#ff9c5a ;
+}
+.nav-menu a{
+    padding: 10px 20px;
+    border-radius: 4px;
+}
+.nav-menu a:hover{
+    background: linear-gradient(45deg , #7cb4fe , #529cfc);
+    background: linear-gradient(-45deg , #ff593c , #fe8d3a);
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+    gap: 20px;
+    color: #eceadd;
+    background: linear-gradient(-90deg , #67628d , #4f467d);
+    background: #183282;
+}
+
+.footer .search{
+    color: white;
+    padding: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 40px;
+    background-color: rgb(255, 255, 255);
+    width: max-content;
+    color: #433d66;
+    background: #7693fb;
+    
+}
+.footer input{
+    color: #433d66;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background: transparent;
+}
+.footer input::placeholder{
+    color: #524e6b;
+}
+.footer button{
+    background: linear-gradient(-45deg , #7cb4fe , #529cfc);
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    border-radius: 40px;
+    background: linear-gradient(-45deg , #ff593c , #fe8d3a);
+}
+.copy-right{
+    padding: 10px;
+    text-align: center;
+    color: #eceadd;
+    background: linear-gradient(-90deg , #4b4767 , #3c355e);
+    background: #183282;
+}
