@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- navbar  -->
+    <nav class="navbar">
+      <div class="logo">Summer Trip</div>
+      <ul class="nav-menu">
+        <a href="">Home</a>
+        <a href="">About</a>
+        <a href="">Service</a>
+      </ul>
+    </nav>
+    <!-- navbar  -->
+
+    <!-- pagesection -->
+    <div class="header">
+      <div class="h-info">
+        <img class="abcd" src="assets/wonders2.png" alt="" />
+        <h1>Welcome To Sasta Safar</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+          suscipit officiis illo accusantium quasi. Et modi, quis dolores eius
+          commodi dolor quae rem eos! Quos animi corrupti expedita qui officia.
+        </p>
+        <div class="search">
+          <input type="text" placeholder="Enter location" />
+          <button id="search-results-btn">Search</button>
+          <div id="show-search-results"></div>
+        </div>
+      </div>
+      <div class="h-img">
+        <img src="assets/family.png" alt="" />
+      </div>
+    </div>
+
+    <div class="header2" id="service-parent"></div>
+
+    <div class="header3">
+      <div class="service-info">
+        <h4>02</h4>
+        <h2>SPECIAL PACKAGE</h2>
+        <p>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="service-btn">Learn More</a>
+        <div>
+          <button class="carousel-prev service-btn">Prev</button>
+          <button class="carousel-next service-btn">Next</button>
+        </div>
+      </div>
+      <div class="carousel">
+        <div class="carousel-inner" id="package_parent"></div>
+      </div>
+    </div>
+    <!-- pagesection 2-->
+
+    <div class="footer">
+      <h1>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit Provident,
+        illo.
+      </h1>
+      <div class="search">
+        <input type="text" placeholder="Enter your email" />
+        <button>Get Started</button>
+      </div>
+      <div class="contact">🤦‍♂️ 🤦‍♀️ 🤷‍♀️ 🤷‍♂️</div>
+    </div>
+    <div class="copy-right">@2022 Every Sunday</div>
+  </body>
+</html>
+
+<script>
+  let data_services = [
+    {
+      title: "Service title1",
+      img: "assets/family.png",
+      info: "Some quick example text to build on the card title and make up the",
+    },
+    {
+      title: "Service title2",
+      img: "assets/family.png",
+      info: "Some quick example text to build on the card title and make up the",
+    },
+    {
+      title: "Service title3",
+      img: "assets/family.png",
+      info: "Some quick example text to build on the card title and make up the",
+    },
+  ];
+
+  let service_parent = document.getElementById("service-parent");
+
+  function showServices(data) {
+    service_parent.innerHTML = null;
+    data.forEach((element) => {
+      let { title, img, info } = element;
+      console.log(title);
+
+      let div = document.createElement("div");
+      div.classList.add("s-card");
+      div.innerHTML = `
+        <img src="${img}" />
+        <div class="s-card-info">
+          <h3>Card title</h3>
+          <p>
+            Some quick example text to build on the card title and make up the
+          </p>
+        </div>`;
+      service_parent.append(div);
+    });
+    let div = document.createElement("div");
+    div.classList.add("service-info");
+    div.innerHTML = `
+        <h4>01</h4>
+        <h2>OUR SERVICE</h2>
+        <p>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="service-btn">Learn More</a>`;
+    service_parent.append(div);
+  }
+
+  showServices(data_services);
+
+  let package_parent = document.getElementById("package_parent");
+
+  let data_package = [
+    {
+      title: "Taj Mahal",
+      img: "assets/taj-mahal3.jpg",
+      info: "lorem lolo",
+      rating: 4.5,
+    },
+    {
+      title: "shimla Himalayas Tour",
+      img: "assets/himalya.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+    },
+    {
+      title: "India Gate",
+      img: "assets/india-gate.jpg",
+      info: "lorem lolo",
+      rating: 4.9,
+    },
+    {
+      title: "Sunderbans Forest Getaway",
+      img: "assets/sundarban.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+    },
+    {
+      title: "Tribal Tours Of Chattisgarh",
+      img: "assets/tribe-chattisgarh.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+    },
+    {
+      title: "Laal Kila",
+      img: "assets/red-fort.jpg",
+      info: "lorem lolo",
+      rating: 4.2,
+    },
+    {
+      title: "Effil Tower",
+      img: "assets/effil-tower.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+    },
+
+
+    {
+      title: "Sunderbans Forest Getaway",
+      img: "assets/sundarban.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+    },
+  ];
+  function showpackage(data) {
+    // service_parent.innerHTML = null;
+    let arr = [];
+    data.forEach((element) => {
+      let { title, img, info, rating } = element;
+      // console.log(title);
+      let div_main = document.createElement("div");
+      div_main.classList.add("carousel-item");
+      div_main.classList.add("active");
+
+      let div = document.createElement("div");
+      div.classList.add("s-card");
+      div.style.background = `url(${img})`
+      
+      div.innerHTML = `
+      <div class="abcde">
+        <img src="${img}" />
+        <div class="special-pakage">
+            <div>
+                <h4>${title}</h4>
+                <p>${info}</p>
+                </div>
+                <button class="service-btn">Book now</button>
+                </div>
+                
+                <div class="star">⭐ ${rating}</div></div>`;
+
+      arr.push(div);
+      if (arr.length == 2) {
+        console.log(arr);
+        arr.forEach((e) => {
+          div_main.append(e);
+        });
+        arr = [];
+        package_parent.append(div_main);
+      }
+    });
+  }
+
+  showpackage(data_package);
+
+  //   carausol code
+
+  function carausolsetting() {
+    const carouselInner = document.querySelector(".carousel-inner");
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    const carouselItemWidth = carouselItems[0].offsetWidth;
+    let currentIndex = 0;
+    const prevButton = document.querySelector(".carousel-prev");
+    const nextButton = document.querySelector(".carousel-next");
+
+    function slideNext() {
+      if (currentIndex === carouselItems.length - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex = currentIndex + 0.5;
+      }
+      carouselInner.style.transform = `translateX(-${
+        currentIndex * carouselItemWidth
+      }px)`;
+    }
+
+    function slidePrev() {
+      if (currentIndex === 0) {
+        currentIndex = carouselItems.length - 1;
+      } else {
+        currentIndex = currentIndex - 0.5;
+      }
+      carouselInner.style.transform = `translateX(-${
+        currentIndex * carouselItemWidth
+      }px)`;
+    }
+
+    nextButton.addEventListener("click", slideNext);
+    prevButton.addEventListener("click", slidePrev);
+    setInterval(slideNext, 5000);
+  }
+  carausolsetting();
+  //   carausol code
+</script>
