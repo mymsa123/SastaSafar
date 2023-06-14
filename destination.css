@@ -1,0 +1,284 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* header */
+#header {
+    position: static;
+    background-color: whitesmoke;
+}
+
+/* first */
+#first {
+    display: flex;
+    margin: 4em 4em ;
+    /* justify-content: center; */
+}
+
+/* side */
+#side{
+    width: 20vw;
+}
+#sortingdata, #filteringdata{
+    margin:1em;
+}
+#sortingdata > p, #filteringdata > p{
+    font-size: larger;
+    margin-left:.4em;
+}
+
+
+
+#price{
+    float: right;
+}
+#location, #destination{
+    font-size: small;
+    padding: 5px 0;
+}
+#destination{
+    font-weight: bold;
+}
+#price{
+font-size:22px;
+float: right;
+}
+
+
+
+
+
+ /* button */
+
+ .btndiv{
+    display: flex;
+    margin-top:10px;
+    justify-content: space-between;
+}
+.btn {
+    appearance: none;
+    background-color: rgb(240, 240, 240);
+    /* border: 0.125em solid #7cbba8; */
+    border:none;
+    border-radius: 0.9375em;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 2.75em;
+    min-width: 0;
+    outline: none;
+    padding: 0em 0.6em;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+   }
+   
+   .btn:disabled {
+    pointer-events: none;
+   }
+   
+   .btn:hover {
+    color: #fff;
+    background-color: #359381;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+   }
+   
+   .btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+   }
+
+  /* loding card */
+  .card {
+    width: 70vw;
+    height: 110px;
+    background: #ffff;
+    margin:10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    /* box-shadow: 0 1px 25px rgba(0,0,0,0.2); */
+    /* position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%; */
+    padding: 20px 10px;
+    border-radius:10px;
+  }
+  
+  .card_load {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    float: left;
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 
+    40%, #e5e5e5 48%);
+    border-radius: 50%;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+  }
+  
+  .card_load_extreme_title {
+    width: 50vw;
+    height: 10px;
+    position: relative;
+    float: right;
+    border-radius: 5px;
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 
+    40%, #e5e5e5 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+  }
+  
+  .card_load_extreme_descripion {
+    width: 50vw;
+    height: 47px;
+    position: relative;
+    float: right;
+    border-radius: 5px;
+    background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 
+    40%, #e5e5e5 48%);
+    margin-top: 10px;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 2s infinite;
+  }
+  
+  @keyframes load89234 {
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+
+   /* searchbar */
+     #searchbar {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        margin-top:2em;
+    }
+
+    #searchbar input,#sortingdata select {
+        width: 90%;
+        margin: .3rem;
+        background-color: #e4e4e4;
+        color: #000;
+        padding: 1rem 2rem;
+        min-height: 40px;
+        border-radius: 10px;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        border: none;
+        line-height: 1.15;
+        box-shadow: 0px 10px 20px -18px;
+    }
+    #sortingdata select{
+        width: 12vw;
+    }
+    #searchbar input::placeholder, #sortingdata select::placeholder{
+        color: #000;
+    }
+
+    #searchbar input:focus, #sortingdata select:focus {
+        border-bottom: 2px solid #7cbba8;
+        border-radius: 4px 4px 2px 2px;
+    }
+
+    #searchbar input:hover, #sortingdata select:hover {
+        outline: 1px solid lightgrey;
+    }
+
+
+
+    #searchbar select {
+        padding: .15rem .5rem;
+    }
+
+
+
+    /* checkbox */
+    #pricefilter, #destinationfilter, #durationfilter{
+        margin:1em .4em;
+        line-height: 1.8em;
+    }
+    #pricefilter > p, #destinationfilter> p, #durationfilter> p{
+        color: #2c7467;
+        font-weight: bold;
+    }
+   #pricefilter input, #destinationfilter input, #durationfilter input{
+    width: auto;
+   }
+
+   .btn{
+    
+    width: fit-content;
+   }
+
+
+   @media screen and (max-width: 768px) and (min-width:426px) {
+    #first{
+        flex-direction: column;
+    }
+   
+    #side, #content{
+        width: 100%;
+    }
+    #side{
+        text-align: center;
+    }
+    #sortingdata select{
+        width: 80vw;
+    }
+
+    .cardiv{
+        width: 100%;
+    }
+
+  
+   }
+
+
+   @media screen and (max-width: 425px) and (min-width:300px) {
+    #first{
+        flex-direction: column;
+    }
+   
+    #side, #content{
+        width: 100%;
+    }
+    #side{
+        text-align: center;
+    }
+    #sortingdata select{
+        width: 80vw;
+    }
+
+    .cardiv{
+        width: 100%;
+        flex-direction: column;
+    }
+    .img_slide{
+        margin: auto;
+    }
+    .details{
+        margin-left: 0px;
+    }
+    .mainimg{
+        width: 100%;
+    }
+}
