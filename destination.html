@@ -26,6 +26,17 @@
 </head>
 
 <body>
+
+     <!-- navbar  -->
+     <nav class="navbar">
+        <div class="logo">Summer Trip</div>
+        <ul class="nav-menu">
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Service</a>
+        </ul>
+      </nav>
+
     <header id="header"></header>
     <section id="searchbar">
         <input class="input" id="search" name="text" placeholder="Search..." type="search">
@@ -54,16 +65,13 @@
                         20,000 Above</div>
                 </div>
                 <div id="destinationfilter">
-                    <!-- <div><span><input type="radio" name="destination_radio" id="first_destination"></span>
-                        Maharashtra</div> -->
+                    
 
                 </div>
-                <!-- <div id="durationfilter">
+                <!-- <div id="durationfilter"> -->
 
-                     <div><span><input type="radio" name="duration_radio" id="first_duration"></span>
-                        1 Night / 1 Day</div>
-                      
-                </div> -->
+                    
+                <!-- </div> -->
                 <div id="clearfilter">
                     <div class="">
                         <button class="btn" onclick="ClearFilter()">Clear Filter</button>
@@ -71,26 +79,26 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="content">
-           
-        </div> -->
+        <div id="content">
+            <!-- <div class="cardiv">
+                <div class="img_slide">
+                    <img src="https://www.holidify.com/images/cmsuploads/compressed/11_20200226103703.jpg" alt=""
+                        width="100vw">
+                </div>
+                <div class="details">
+                    <p>Days</p>
+                    <h2>Title</h2>
+                    <p>Descr</p>
+                    <p>price</p>
+                    <div class="btndiv">
+                        <button class="btn">Add to Cart</button>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
 
     </section>
-
-
-    <!-- product div -->
-    <div id="product_div">
-        <div class="filter_head">
-            <h3 id="noofcards"></h3>
-            <button id="filter"><i class="fa-solid fa-filter"></i></button>
-        </div>
-
-        <div id="product_container">
-            <!-- append the product card here -->
-        </div>
-
-        <div class="pagination"></div>
-    </div>
 
     <footer id="footer"></footer>
 </body>
@@ -111,144 +119,14 @@
     let destinationfilter = document.querySelector("#destinationfilter");
     let durationfilter = document.querySelector("#durationfilter");
 
-    //from hotels page
 
-    let mainSection = document.getElementById("product_container")
-    let noofcards = document.getElementById("noofcards");
-
-    let currentPage = 1;
-    let rowsPerPage = 6;
-
-    //calling fetch data function
-     fetchdata();
-
-     async function fetchdata(page = 1) {
-    try {
-        let res = await fetch("https://mock-api-hotels.onrender.com/hotels")
-        let data = await res.json();
-        console.log(data);
-        currentPage = page;
-        display(data);
-        
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-
-
-
-
-// display function
-function display(data) {
-    let startIndex = (currentPage - 1) * rowsPerPage;
-    let endIndex = startIndex + rowsPerPage;
-    let paginatedData = data.slice(startIndex, endIndex);
-
-    mainSection.innerHTML = "";
-
-    // function to increaseor decrease noOfCards. of guests
-    let count = 1;
-    increase_guest.addEventListener("click", function () {
-        count++;
-        total_guest.textContent = count;
-    })
-
-    decrease_guest.addEventListener("click", function () {
-        if (count > 1) {
-            count--;
-            total_guest.textContent = count;
-        }
-    })
-
-    noofcards.textContent = `${data.length} Results`;
-    let cardlist = document.createElement("div")
-    cardlist.className = "card-list";
-
-    paginatedData.forEach((el) => {
-        let card = createcard(el);
-        cardlist.append(card);
-        mainSection.append(cardlist);
-    })
-
-    let totalPages = Math.ceil(data.length / rowsPerPage);
-
-    let pagination = document.querySelector(".pagination");
-    pagination.innerHTML = "";
-
-    for (let i = 1; i <= totalPages; i++) {
-        let link = document.createElement("a");
-        link.href = "#";
-        link.innerText = i;
-        if (i === currentPage) {
-            link.classList.add("active");
-        }
-        link.addEventListener("click", function () {
-            currentPage = i;
-            fetchdata(i);
-        });
-        pagination.appendChild(link);
-    }
-}
-
-// createcard function 
-function createcard(el) {
-    let card = document.createElement("div");
-    card.className = "card";
-
-    let img = document.createElement("img")
-    img.src = el.image;
-    img.className = "hotelImg";
-
-    let carditem = document.createElement("div")
-    carditem.className = "card-item";
-
-    let h3 = document.createElement("h3")
-    h3.style.minHeight = "50px";
-    h3.textContent = el.name;
-
-    let location = document.createElement("p")
-    location.textContent = el.location
-    location.style.margin = "10px";
-
-    let rating = document.createElement("p");
-    rating.textContent = `★ ${el.review}`;
-
-    let h1 = document.createElement("h1")
-    h1.textContent = `₹ ${el.price}`;
-    h1.style.display = "inline-block";
-
-    let span = document.createElement("span");
-    span.textContent = " /Night";
-    span.className = "span1";
-
-    let divprice = document.createElement("div")
-    divprice.className = "divprice";
-
-    divprice.append(h1, span);
-
-    card.addEventListener('click', () => {
-        window.location.href = './individual.html';
-        hoteldata.push({ ...el })
-        localStorage.setItem("hotel", JSON.stringify(hoteldata))
-    });
-
-    carditem.append(h3, location, rating, divprice)
-    card.append(img, carditem)
-    return card;
-}
-
-
-
-
-
-
-
-    DisplayDuration(APIData);
+   // DisplayDuration(APIData);
     DisplayDestination(APIData);
-
+    // if (APIData.length == 0) {
     fetchData(API);
-    
+    // } else {
+    //     DisplayData(APIData);
+    // }
     searchbar.addEventListener('input', () => {
         if (searchbar.value !== "") {
             let temp = `${API}?title_like=${searchbar.value}`;
@@ -276,20 +154,20 @@ function createcard(el) {
     })
 
 
-    // function DisplayDuration(data) {
-    //     durationfilter.innerHTML = "<p>Duration</p>";
-    //     let alreadydata = [];
-    //     let count = 0;
-    //     data.forEach((ele) => {
-    //         if (alreadydata.includes(ele.duration)) {
-    //             return;
-    //         } else {
-    //             count++;
-    //             alreadydata.push(ele.duration);
-    //             durationfilter.append(CreateDurationList(ele, count));
-    //         }
-    //     })
-    // }
+    function DisplayDuration(data) {
+        durationfilter.innerHTML = "<p>Duration</p>";
+        let alreadydata = [];
+        let count = 0;
+        data.forEach((ele) => {
+            if (alreadydata.includes(ele.duration)) {
+                return;
+            } else {
+                count++;
+                alreadydata.push(ele.duration);
+                durationfilter.append(CreateDurationList(ele, count));
+            }
+        })
+    }
 
     function DisplayDestination(data) {
         destinationfilter
@@ -313,22 +191,111 @@ function createcard(el) {
 
         return div;
     }
+    function CreateDurationList(ele, ind) {
+        let div = document.createElement('div');
+        div.innerHTML = `<span><input type="radio" name="duration_radio" value="${ele.duration}" id="duration${ind}"></span>  ${ele.duration}`;
+        return div;
+    }
+    async function fetchData(APIlink) {
+        try {
+            let res = await fetch(APIlink);
+            let data = await res.json();
+            localStorage.setItem('APIData', JSON.stringify(data));
+            console.log(data); // try to do functionalites with array of data.
+            content.innerHTML = "";
+            data.forEach(ele => {
+                content.append(CreateBlackCard());
+            });
+            setTimeout(() => {
+                content.innerHTML = "";
+                data.forEach(ele => {
+                    content.append(CreateCard(ele));
+                });
+            }, 2000);
 
+        } catch (error) {
+            console.log(error);
 
-
-
-    //to clear filter
-
-    function ClearFilter() {
-        window.location.reload();
+        }
     }
 
 
-    //
+    function DisplayData(data) {
+        content.innerHTML = "";
+        data.forEach(ele => {
+            content.append(CreateBlackCard());
+        });
+        setTimeout(() => {
+            content.innerHTML = "";
+            data.forEach(ele => {
+                content.append(CreateCard(ele));
+            });
+        }, 2000);
+    }
+    function CreateBlackCard() {
+        let blackcard = document.createElement("div");
+        blackcard.className = "card";
+        blackcard.style.width = "60vw";
+        blackcard.innerHTML = `
+    <div class="card_load"></div>
+    <div class="card_load_extreme_title"></div>
+    <div class="card_load_extreme_descripion"></div>
+`;
+        return blackcard;
+    }
 
+    function CreateCard(ele) {
+        let card = document.createElement('div');
+        card.className = "cardiv";
+        card.setAttribute('data-id', (ele.id));
+
+        card.innerHTML = `
+                <div class="img_slide">
+                   <img src="${ele.image[0]}" alt="img"  class="mainimg">
+                </div>
+                <div class="details">
+                    <div style="display:flex; justify-content:space-between; align-item:center"> 
+                    <p id="duration">${ele.duration}</p>
+                  
+                    </div>
+                    <h3 id="title">${ele.title}</h3>
+                    <p id="location">${ele.location}</p>
+                    <p id="destination">${ele.destination}</p>
+                    <p id="price">${ele.price}</p>
+                    <div class="btndiv">
+                        <button class="btn" onclick="AddToCart(${ele.id})">Add to Cart</button>
+                        <button class="btn">View Details</button>
+                    </div>
+                </div>`;
+
+
+        let detail = card.querySelector('.details');
+        detail.addEventListener('click', () => {
+            localStorage.setItem('package_id', ele.id);
+            window.location.href = "user_package_view.html";
+        });
+        return card;
+    }
+    function ClearFilter() {
+        window.location.reload();
+    }
+    function AddToCart(ids) {
+        localStorage.setItem('package_id', ids);
+        window.location.href = "user_checkout.html";
+    }
 
     pricefilter.addEventListener('click', (event) => {
-        
+        // let checkedAPI;
+        // if (event.target.id === "first_radio") {
+        //     checkedAPI = `${API}?price_gte=3000&price_lte=5000`;
+        // } else if (event.target.id === "second_radio") {
+        //     checkedAPI = `${API}?price_gte=5000&price_lte=10000`;
+        // } else if (event.target.id === "third_radio") {
+        //     checkedAPI = `${API}?price_gte=10000&price_lte=20000`;
+        // } else if (event.target.id === "fourth_radio") {
+        //     checkedAPI = `${API}?price_gte=20000`;
+        // }
+        // fetchData(checkedAPI);
 
         if (event.target.value !== undefined) {
             let temp = event.target.value;
@@ -364,14 +331,20 @@ function createcard(el) {
         }
     });
 
-
-    //
-
-
+    // durationfilter.addEventListener('click', (event) => {
+    //     if (event.target.value !== undefined) {
+    //         // console.log(event.target.value);
+    //         let filtered = APIData.filter((ele) => {
+    //             if (ele.duration === event.target.value) {
+    //                 return true;
+    //             }
+    //         });
+    //         DisplayData(filtered);
+    //     }
+    // })
     if (content.innerHTML == " ") {
         content.innerHTML = "<h1>No Data Found!</h1>";
     }
 </script>
 
 </html>
-
