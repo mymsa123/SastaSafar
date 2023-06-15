@@ -191,3 +191,11 @@ body{
     font-size: 24px;
     color: rgb(255, 147, 92);
 }
+
+#searchbar .search{
+  border-radius: 40px;
+  color: rgb(255 255 255);
+  background: linear-gradient(45deg, rgb(16 16 16), rgb(18 20 20));
+  padding: 10px 20px;
+  border: none;
+}
