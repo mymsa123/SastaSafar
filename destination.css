@@ -194,8 +194,8 @@ body{
 
 #searchbar #search{
   border-radius: 40px;
-  color: rgb(255 255 255);
-  background: linear-gradient(45deg, rgb(16 16 16), rgb(18 20 20));
+  color: rgb(0 0 0);
+  background: linear-gradient(45deg, rgb(198 198 198), rgb(196 196 196));
   padding: 10px 20px;
   border: none;
 }
