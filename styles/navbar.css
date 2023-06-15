@@ -27,6 +27,8 @@ button {
 .nav-menu {
   display: flex;
   gap: 20px;
+  flex-grow: 1;
+  justify-content: center;
 }
 .logo {
   font-size: 25px;
@@ -51,7 +53,8 @@ button {
   color: #eceadd;
   background: linear-gradient(-90deg, #67628d, #4f467d);
   background: #183282;
-    margin-left: 70px;
+  border-radius: 24px;
+
 }
 .conct{
   text-align: center;
@@ -254,8 +257,18 @@ button {
 }
 /* research */
 
-.footer{
-  width: calc(100% - 130px);
-  margin: 25px 0px 20px 100px;
-  border-radius: 24px;
+.foot-correct{
+  width: calc(100% - 70px);
+  margin-left: 70px;
+  padding: 30px;
+}
+.login-nav-cont{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.flex-div img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
