@@ -2,9 +2,6 @@
 let baseurl=
 let TotalProductCount=document.getElementById("totalProducts")
 
-
-
-
 // Getting Number of Products
 fetch(`${baseurl}/tours`)
     .then(res=>res.json())
