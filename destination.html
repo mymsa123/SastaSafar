@@ -7,18 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Packages</title>
     <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <script
+    src="https://kit.fontawesome.com/7a4d6432b5.js"
+    crossorigin="anonymous"
+  ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $("#header").load("user_header.html");
-            $("#footer").load("user_footer.html");
-
-        });
-    </script>
+    <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="destination.css">
     <style>
 
@@ -27,20 +25,10 @@
 
 <body>
 
-     <!-- navbar  -->
-     <nav class="navbar">
-        <div class="logo">Summer Trip</div>
-        <ul class="nav-menu">
-          <a href="">Home</a>
-          <a href="">About</a>
-          <a href="">Service</a>
-        </ul>
-      </nav>
+    <!-- navbar  -->
+    <nav id="nav_parent" class="navbar"></nav>
+    <!-- navbar  -->
 
-    <header id="header"></header>
-    <section id="searchbar">
-        <input class="input" id="search" name="text" placeholder="Search..." type="search">
-    </section>
     <section id="first">
         <div id="side">
             <div id="sortingdata">
@@ -100,9 +88,17 @@
 
     </section>
 
-    <footer id="footer"></footer>
+    <div class="foot-correct">
+        <div class="footer" id="foot_parent"></div>
+    </div>
 </body>
+<script src="navbar.js"></script>
 <script>
+    let search_data_div = document.getElementById("search-data-div")
+    search_data_div.innerHTML = `
+    <section id="searchbar">
+        <input class="input" id="search" name="text" placeholder="Search..." type="search">
+    </section>`
     const API = "https://trypot-nation-dkah.onrender.com/packages";
     let APIData = JSON.parse(localStorage.getItem('APIData')) || [];
     let content = document.querySelector('#content');
@@ -245,6 +241,9 @@
     }
 
     function CreateCard(ele) {
+        let card_main = document.createElement('div');
+        card_main.style.background = `url(${ele.image[0]})`
+        card_main.className = "card-main-div";
         let card = document.createElement('div');
         card.className = "cardiv";
         card.setAttribute('data-id', (ele.id));
@@ -255,13 +254,17 @@
                 </div>
                 <div class="details">
                     <div style="display:flex; justify-content:space-between; align-item:center"> 
-                    <p id="duration">${ele.duration}</p>
+                    <div class="duration-details">
+                        <p id="duration">${ele.duration}</p>
+                        <p><i class="fa-regular fa-heart"></i></p>
+                    </div>
                   
                     </div>
                     <h3 id="title">${ele.title}</h3>
-                    <p id="location">${ele.location}</p>
-                    <p id="destination">${ele.destination}</p>
-                    <p id="price">${ele.price}</p>
+                    <div class="destination-details">
+                        <p id="destination"><i class="fa-solid fa-location-dot"></i> ${ele.destination}</p>
+                        <p id="price">RS: ${ele.price}</p>
+                    </div>
                     <div class="btndiv">
                         <button class="btn" onclick="AddToCart(${ele.id})">Add to Cart</button>
                         <button class="btn">View Details</button>
@@ -274,7 +277,8 @@
             localStorage.setItem('package_id', ele.id);
             window.location.href = "user_package_view.html";
         });
-        return card;
+        card_main.append(card)
+        return card_main;
     }
     function ClearFilter() {
         window.location.reload();

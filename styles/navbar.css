@@ -27,6 +27,8 @@ button {
 .nav-menu {
   display: flex;
   gap: 20px;
+  flex-grow: 1;
+  justify-content: center;
 }
 .logo {
   font-size: 25px;
@@ -46,13 +48,17 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 50px;
+  /* padding: 50px; */
   gap: 20px;
   color: #eceadd;
   background: linear-gradient(-90deg, #67628d, #4f467d);
   background: #183282;
-}
+  border-radius: 24px;
 
+}
+.conct{
+  text-align: center;
+}
 .footer .search {
   color: white;
   font-size: 18px;
@@ -198,4 +204,71 @@ button {
   color: #eceadd;
   background: linear-gradient(-90deg, #4b4767, #3c355e);
   background: #102565;
+}
+
+
+/* research */
+.navbar{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.navbar2{
+  background: #183282;
+  width: 70px;
+  position: fixed;
+  top: 61px;
+  left: 0;
+  height: calc(100vh - 61px);
+  z-index: 900;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 20px;
+  padding: 8px;
+  color: white;
+}
+
+.navbar2 i{
+  font-size: 40px;
+  cursor: pointer;
+  background: radial-gradient( circle at 33% 100%, #ffffff 4%, #ffffff 30%, #fff9fc 62%, #f3f2f3 85%, #ffffff );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.navbar2 img:hover{
+  background-color: #2d50b8;
+}
+.navbar2> div{
+  padding: 10px;
+  background-color: #0e1c48;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  gap: 10px;
+}
+/* research */
+
+.foot-correct{
+  width: calc(100% - 70px);
+  margin-left: 70px;
+  padding: 30px;
+}
+.login-nav-cont{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.flex-div img{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }

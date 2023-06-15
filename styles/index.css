@@ -12,6 +12,8 @@
   background: linear-gradient(-90deg, #f7f6f0, #eceadd);
   background: linear-gradient(-90deg, #e5e1ff, #d0c8ff);
   background: #7693fb;
+  margin-left: 70px;
+  margin-top: 60px;
 }
 .abcd {
   height: 200px;
@@ -109,7 +111,7 @@
 
 .header2 {
   display: grid;
-  grid-template-columns: repeat(4, 250px);
+  grid-template-columns: repeat(4, 242px);
   height: max-content;
   padding: 50px;
   justify-content: center;
@@ -117,6 +119,7 @@
   color: #eceadd;
   background: linear-gradient(-90deg, #67628d, #4f467d);
   background: #183282;
+  margin-left: 70px;
 }
 .service-info {
   color: #f4f2ff;
@@ -165,7 +168,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 .header2 .s-card:hover {
-  color: #183282;
+  color: #0e1c48;
   border: 1px solid #918bb1;
   background: linear-gradient(90deg, #67628d, #4f467d);
   background: #c0cdff;
@@ -177,8 +180,8 @@
 .header2 .s-card img {
   width: 180px;
   height: 180px;
-  padding: 20px;
-  object-fit: contain;
+  padding: 8px;
+  object-fit: cover;
   border-radius: 50%;
   background: #d0c8ff;
   transition: background 0.3s;
@@ -260,6 +263,7 @@
   color: #ffffff;
   background: linear-gradient(-90deg, #e5e1ff, #d0c8ff);
   background: #7693fb;
+  margin-left: 70px;
 }
 
 .header3 .service-info {
@@ -343,4 +347,20 @@
   backdrop-filter: blur(5px);
   color: white;
   font-weight: bold;
+}
+
+
+.header , .header2 , .header3{
+  width: calc(100% - 130px);
+  margin: 25px 0px 20px 100px;
+  border-radius: 24px;
+}
+
+.header{
+  margin: 100px 0px 20px 100px;
+
+}
+
+body{
+  background: #aec2ff;
 }
