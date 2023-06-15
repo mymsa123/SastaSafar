@@ -177,3 +177,45 @@ h2 {
 .sign-link p a:hover {
     text-decoration: underline;
 }
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Responsiveness */
+
+/* tablet */
+@media only screen and (max-width: 768px) {
+    .form-wrapper {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 425px) {
+    .wrapper {
+        width: 300px;
+        height: 400px;
+      }
+
+    .wrapper .form-wrapper {
+      padding: 10px;
+    }
+  
+    .wrapper .input-group {
+      width: calc(100% - 16px);
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  }
