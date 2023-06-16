@@ -99,7 +99,8 @@
     <section id="searchbar">
         <input class="input" id="search" name="text" placeholder="Search..." type="search">
     </section>`
-    const API = "https://trypot-nation-dkah.onrender.com/packages";
+    // const API = "https://trypot-nation-dkah.onrender.com/packages";
+    const API = "https://648977ba5fa58521caafa573.mockapi.io/tours";
     let APIData = JSON.parse(localStorage.getItem('APIData')) || [];
     let content = document.querySelector('#content');
     let img_slide = document.querySelector(".img_slide");
@@ -266,7 +267,7 @@
                         <p id="price">RS: ${ele.price}</p>
                     </div>
                     <div class="btndiv">
-                        <button class="btn" onclick="AddToCart(${ele.id})">Add to Cart</button>
+                        <button class="btn" onclick="AddToCart(${ele.id})">Book Now</button>
                         <button class="btn">View Details</button>
                     </div>
                 </div>`;
