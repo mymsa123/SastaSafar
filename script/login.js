@@ -44,7 +44,9 @@ signinForm.addEventListener("submit", (event) => {
     const storedUser = JSON.parse(localStorage.getItem(username));
 
     if(storedUser){
-        if(password === storedUser.password){
+        if(password === storedUser.password){ 
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("currentUser", username);
             window.location.href = "index.html";
         }
         else {
