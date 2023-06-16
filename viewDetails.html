@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/navbar.css"> 
+    <link rel="stylesheet" href="styles/viewDetails.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Summer Trip</div>
+        <ul class="nav-menu">
+          <a href=""><i class="fa-solid fa-box-open"></i> Home</a>
+          <a href="">About</a>
+          <a href="">Service</a>
+        </ul>
+      </nav> 
+      
+    <header id="header"></header>
+    <section id="imgslider">
+        <div class="w3-content w3-display-container">
+            <!-- <div class="w3-display-container mySlides">
+                <img src="img_snowtops.jpg" style="width:100%">
+            </div> -->
+        </div>
+    </section>
+    <section id="description">
+        <div id="maindescr">
+            <!-- <div id="fetchdescr">
+                <h1>Package name</h1>
+                <p><span><i class="fa-solid fa-clock fa-spin"></i></span> Duration</p>
+                <p><span><i class="fa-solid fa-location-dot fa-flip"></i></span> Location</p>
+                <h2>Tour Itinerary</h2>
+                <div>
+                    <details>
+                        <summary onclick="changeArrow()">Description <i class="fa-sharp fa-solid fa-angle-down"></i>
+                        </summary>
+                        <ul>
+                            <li>Hello</li>
+                            <li>World</li>
+                        </ul>
+                    </details>
+                </div>
+            </div> -->
+            <!-- <div id="staticdescr">
+                <h3>Meals & other inclusions</h3>
+                <ul>
+                    <li>Accommodation on a double share basis.</li>
+                    <li>Daily breakfast at all places except on the day of arrival.</li>
+                    <li>All transfers and sightseeing by AC vehicle - AC Indigo (02 - 03 Pax)/AC Innova (04- 06 Pax)/AC
+                        Tempo Traveller (07-09 Pax)</li>
+                    <li>Parking charges, toll and driver's allowance.</li>
+                    <li>Government service tax additional on above cost.</li>
+                </ul>
+                <h3>Exclusions</h3>
+                <ul>
+                    <li>Any airfare/train fare.</li>
+                    <li>Supplementary charges during high peak times may change as per the hotel's policy.</li>
+                    <li>Gala dinner charges during Christmas and New Year's Eve.</li>
+                    <li>Any jeep safari/elephant ride.</li>
+                    <li>Any other meals not mentioned in the package inclusions.</li>
+                    <li>Any other destination not mentioned in Itinerary.</li>
+                    <li>Any expenses of personal nature such as laundry, room service, minibar, telephone calls, etc.
+                    </li>
+                    <li>Porterage charges, pony charges, guide, entrance fees, camera fee, ropeway fee.</li>
+                    <li>Any other expenses incurred due to bad weather, road closure, landslides or local political
+                        conditions, etc.</li>
+                    <li>Early check-in and late check-out will be subject to availability of rooms and direct payment
+                        basis only.</li>
+                </ul> -->
+
+                <!-- <section id="similar">
+                    <h3>Similar Packages</h3>
+                    <div id="similardiv">
+                       
+                    </div>
+                </section> -->
+            <!-- </div> -->
+        </div>
+        <div id="pricedescr">
+            <div id="pricecard">
+                <p>₹ <span id="priceshow">Cost</span> per adult onwards</p>
+
+
+                <!-- <p><b>What's included in the price</b></p> -->
+                <!-- <div id="icondiv">
+                    <div id="icon1">
+                        <p><i class="fa-solid fa-bed"></i><b> Twin-sharing<br> rooms</b></p>
+                    </div>
+                    <div id="icon2">
+                        <p><i class="fa-solid fa-car"></i><b> Private AC cab <br> with driver</b></p>
+                    </div>
+                    <div id="icon3">
+                        <p><i class="fa-solid fa-eye"></i><b> Sightseeing in <br>a private AC cab</b></p>
+                    </div>
+                    <div id="icon4">
+                        <p><i class="fa-solid fa-utensils"></i><b> Breakfast</b></p>
+                    </div>
+                </div>
+                <p><i class="fa-solid fa-circle-exclamation"></i> Final price will be shared by our partner agents based
+                    on your requirements</p> -->
+                <button id="booknow">Book Now</button>
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+<script>
+
+
+    let package_id = JSON.parse(localStorage.getItem("package_id")) || null;
+    let body = document.querySelector('body');
+    if (package_id == null) {
+        alert(`Please choose package`);
+        window.location.href = "user_packages.html";
+    } else {
+        function changeArrow() {
+            let arrow = document.querySelector(".fa-sharp");
+            arrow.classList.toggle("fa-angle-up");
+        }
+
+
+        let fetchdescr = document.querySelector("#fetchdescr");
+        let priceshow = document.querySelector('#priceshow');
+        let imgslider = document.querySelector('#imgslider');
+        let similardiv = document.querySelector("#similardiv");
+
+        const API = "https://trypot-nation-dkah.onrender.com/packages";
+
+        let slider_div = document.querySelector('.w3-content');
+        fetchData();
+
+
+        async function fetchData() {
+            try {
+                let res = await fetch(`${API}?id=${package_id}`);
+                let data = await res.json();
+                // console.log(data[0]);
+                // imgdata
+                let imgarray = data[0].image;
+                slider_div.innerHTML = "";
+                imgarray.forEach(element => {
+                    slider_div.append(CreateImageSlider(element));
+                });
+                slider_div.innerHTML = slider_div.innerHTML + `<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+            <button class="w3-button w3-display-right" onclick="plusDivs(1)">&#10095;</button>`;
+
+                // maindata
+                Adddata(data[0]);
+                // similarData(data[0].destination);
+
+
+            } catch (error) {
+                console.log(error);
+
+            }
+        }
+
+
+        async function similarData(desti) {
+            try {
+                let res = await fetch(`${API}?destination=${desti}`);
+                let data = await res.json();
+                similardiv.innerHTML = "";
+                data.forEach((element) => {
+                    similardiv.append(CreateSimilarCard(element));
+                    // similardiv.innerHTML = similardiv.innerHTML+ CreateSimilarCard(element);
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        function CreateSimilarCard(element) {
+            let similar_card = document.createElement('div');
+            similar_card.className = "similar_card";
+            similar_card.innerHTML = `<img src="${element.image[0]}" alt="">
+                            <p>${element.duration}</p>
+                            <h4>${element.title}</h4>
+                            <p><span>${element.price}</span> per adult</p>
+                            <button class="views_limilar">View Details</button>`;
+
+            // let viewslimilar = div.querySelector(".viewslimilar");
+            // viewslimilar.addEventListener('click', ()=>{
+            //     localStorage.setItem('package_id', element.id);
+            //     reload();
+            // });
+
+            return similar_card;
+
+        }
+        function Adddata(data) {
+            priceshow.textContent = data.price;
+            let fetchdescr = document.createElement('div');
+            fetchdescr.className = "fetchdescr";
+            fetchdescr.innerHTML = `
+                <h1 id="title">${data.title}</h1>
+                <p><span><i class="fa-solid fa-clock fa-spin"></i></span> ${data.duration}</p>
+                <p><span><i class="fa-solid fa-location-dot fa-flip"></i></span> ${data.location}</p>
+                <p><i class="fa-solid fa-map-location"></i> ${data.destination}</p>
+                <h2>Tour Itinerary</h2>
+                <div class="tour_descr">
+                    <details>
+                        <summary onclick="changeArrow()">Description <i class="fa-sharp fa-solid fa-angle-down"></i>
+                        </summary>
+                        <ul>
+                            <li>Hello</li>
+                            <li>World</li>
+                        </ul>
+                    </details>
+                </div>
+           
+            `;
+            let maindiv = document.querySelector('#maindescr')
+            maindiv.innerHTML = fetchdescr.innerHTML + maindiv.innerHTML;
+
+
+            let tour_descr = document.querySelector('.tour_descr');
+            tour_descr.innerHTML = "";
+            let tour = data.tour;
+            tour.forEach(element => {
+                tour_descr.append(CreateTourDescr(element));
+            });
+
+
+        }
+
+        function CreateTourDescr(element) {
+            let tourdetails = document.createElement('div');
+            tourdetails.className = "tourdetails";
+            tourdetails.innerHTML = `<details>
+                        <summary onclick="changeArrow()">${element.title}<i class="fa-sharp fa-solid fa-angle-down"></i>
+                        </summary>
+                        <ul>
+                            <li>${element.description}</li>
+                        </ul>
+                    </details>`;
+
+            return tourdetails;
+        }
+        function CreateImageSlider(element) {
+            let div = document.createElement('div');
+            div.className = "w3-display-container mySlides";
+            div.innerHTML = `<img src="${element}" class="slider_img" >`;
+            return div;
+        }
+
+
+
+        
+
+        // slider
+        var slideIndex = 1;
+        setTimeout(() => {
+            showDivs(slideIndex);
+        }, 2000);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+
+
+        document.querySelector('#booknow').addEventListener('click', () => {
+            let user = JSON.parse(localStorage.getItem('user')) || [];
+
+            if(user.length === 0){
+                alert('Please login first');
+                window.location.href = "login.html";
+            }else{
+                window.location.href = "user_checkout.html";
+            }
+
+        })
+    }
+
+
+
+    // $(window).on('load', function () {
+    //     $(body).Visibililty(true);
+    //     $(".loader-wrapper").fadeOut("slow");
+    // })
+
+</script>
+</body>
+</html>
