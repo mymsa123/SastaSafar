@@ -2,6 +2,28 @@ let nav_parent = document.getElementById("nav_parent")
 let foot_parent = document.getElementById("foot_parent")
 
 function addNavbarToPage() {
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const currentUser = localStorage.getItem("currentUser");
+
+    let loginSectionHTML = "";
+
+    if (isLoggedIn === "true") {
+        loginSectionHTML = `
+            <div class="profile-nav-btn flex-div">
+                <span>${currentUser}</span>
+                <button onclick="logout()">Logout</button>
+            </div>
+        `;
+    } else {
+        loginSectionHTML = `
+            <a href="login.html" class="login-nav-btn flex-div">
+                <i class="fa-solid fa-box-open"></i>
+                <span>Login</span>
+            </a>
+        `;
+    }
+
     nav_parent.innerHTML = `
     <div class="logo">Summer Trip</div>
     <ul class="nav-menu">
@@ -10,17 +32,20 @@ function addNavbarToPage() {
         <a href="">Feedback</a>
         <a href="">Pricing</a>
     </ul>
+    
+
+
     <div class="login-nav-cont">
         <div id="search-data-div"></div>
-        <a href="login.html" class="login-nav-btn flex-div">
-            <i class="fa-solid fa-box-open"></i>
-            <span>Login</span>
-        </a>
+        ${loginSectionHTML} <!-- Here the loginSectionHTML variable is used -->
         <div class="flex-div">
             <img src="assets/himalya.jpg" alt="">
             <span class="Name"></span>
         </div>
-    </div>`
+    </div>`;
+
+
+
     foot_parent.innerHTML = `
     <div class="footer-info">
     <div class="footer-social">
@@ -82,6 +107,12 @@ function addNavbarToPage() {
   </div>
 
   </div>`
+}
+
+function logout() {
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("currentUser", "");
+    window.location.reload();
 }
 
 addNavbarToPage()
