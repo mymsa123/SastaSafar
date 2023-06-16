@@ -7,9 +7,9 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="admin.css">
+	<link rel="stylesheet" href="user.css">
 	<link rel="shortcut icon" href="logo-black.png" type="image/x-icon">
-	<title>Admin Page</title>
+	<title>AdminPage</title>
 </head>
 <body>
 
@@ -21,14 +21,14 @@
 			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="admin.html">
+			<li>
+				<a href="Admin.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
 			</li>
-			<li>
-				<a href="user.html">
+			<li  class="active">
+				<a href="User.html">
 					<i class='bx bxs-user-detail'></i>
 					<span class="text">Users</span>
 				</a>
@@ -40,7 +40,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="add.html">
+				<a href="Add.html">
 					<i class='bx bx-plus-medical' ></i>
 					<span class="text">Add / Update</span>
 				</a>
@@ -48,7 +48,7 @@
 			<li>
 				<a href="manage.html">
 					<i class='bx bxs-data' ></i>
-					<span class="text">Manage trips</span>
+					<span class="text">Manage Trips</span>
 				</a>
 			</li>
 		</ul>
@@ -69,8 +69,8 @@
 	<section id="content">
 		<!-- NAVBAR START-->
 		<nav>
-			<i class='bx bx-menu'></i>
-			<a href="#" class="nav-link">Categories</a>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">User Name</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -84,101 +84,91 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard Analytics</h1>
+					<h1>User Details</h1>
 				</div>
 			</div>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-box' ></i>
-					<span class="text">
-						<h3 id="totaltrip"></h3>
-						<p>No. of Trips</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-book' ></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Total trips</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-car' ></i>>
-					<span class="text">
-						<h3>2543</h3>
-						<p>Total achieved trips</p>
-					</span>
-				</li>
-			</ul>
+			
 
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent Orders</h3>
+						<h3>USERS</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date </th>
-								<th>Price</th>
-								<th>Status</th>
+								<th> First Name</th>
+								<th> Last Name</th>
+								<th>Email ID</th>
+								<th>Contact Number</th>
+								<th>CIty</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>
-									Md Shabir Alam 
+									Md.Sabir   
 								</td>
-								<td>23-01-2023</td>
-								<td>8000</td>
-								<td>Done</td>
+                                <td>Alam</td>
+								
+								<td>Sabir70779560@gmail.com</td>
+								<td>7717730476</td>
+								<td>Kolkata</td>
 							</tr>
 							<tr>
 								<td>
-									Md adil 
+									Neha
 								</td>
-								<td>19-05-2022</td>
-								<td>3999</td>
-								<td>Pending</td>
+                                <td>Singh</td>
+								
+								<td>rs7920657@gmail.com</td>
+								<td>900549700</td>
+								<td>Kanpur</td>
 							</tr>
 							<tr>
 								<td>
-									Neha Singh
+									Achal
 								</td>
-								<td>22-01-2023</td>
-								<td>9000</td>
-								<td>Done</td>
+                                <td>Gaddamwar</td>
+								
+								<td>achalgaddawar.ag@gmail.com</td>
+								<td>9890935619</td>
+								<td>Aurangabad</td>
 							</tr>
 							<tr>
 								<td>
-									Achal Gaddamwar
+									Mohd 
 								</td>
-								<td>22-01-2023</td>
-								<td>25500</td>
-								<td>Cancelled</td>
+                                <td>Adil</td>
+								
+								<td>md3530546@gmail.com</td>
+								<td>7017511862</td>
+								<td>Bihar</td>
 							</tr>
-							<tr>
+                            <tr>
 								<td>
-									Priya Patole
+									Priya 
 								</td>
-								<td>22-01-2023</td>
-								<td>5000</td>
-								<td>Pending</td>
+                                <td>Patole</td>
+								
+								<td>priyap1038@gmail.com</td>
+								<td>7676886137</td>
+								<td>Haveri</td>
 							</tr>
 						</tbody>
 					</table>
-				</div>	
-		</main>  
+				</div>
+				
+		</main>
 		<!-- MAIN PART END -->
 	</section>
 	<!-- CONTENT PART END -->
 	
 
-	<script src="admin.js"></script>
+	<script src="script.js"></script>
 </body>
 </html>

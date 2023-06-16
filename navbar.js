@@ -28,9 +28,9 @@ function addNavbarToPage() {
     <div class="logo">Summer Trip</div>
     <ul class="nav-menu">
         <a href="/"><i class="fa-solid fa-box-open"></i> Home</a>
-        <a href="/destination.html">Destination</a>
-        <a href="">Feedback</a>
-        <a href="">Pricing</a>
+        <a href="/destination.html"><i class="fa-solid fa-car"></i> Destination</a>
+        <a href=""><i class="fa-solid fa-box"></i>  View Details</a>
+        <a href=""><i class="fa-solid fa-info-circle"></i> About</a>
     </ul>
     
 

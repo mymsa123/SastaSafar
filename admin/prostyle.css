@@ -1,0 +1,277 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .heading {
+    padding-top: 20px;
+    display: block;
+  }
+  .box {
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    color: #555;
+  }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 20px;
+    margin-left: 20px;
+    border-left: 1px solid rgb(199, 197, 197);
+    border-top: 1px solid rgb(199, 197, 197);
+  }
+  .product {
+    box-shadow: 2px 2px 12px rgb(235, 232, 232);
+    margin-right: 10px ;
+    padding: 0 10px 10px 20px;
+    text-align: center;
+    height: auto;
+    margin-top: 5px;
+    margin-left: 5px;
+    
+  }
+  
+  .product img {
+    width: 100%;
+    display: block;
+  }
+  .name {
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    color: grey;
+    height: 20px;
+  }
+  .price{
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(174, 30, 30);
+    padding-top: 40px;
+  }
+  .product :hover {
+    cursor: pointer;
+  }
+  .product button {
+    margin: 6px  auto;
+    display: block;
+    width:90%;
+    border: none;
+    text-align: center;
+    padding: 8px;
+    background-color: rgba(253, 253, 253, 0.856);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 1px solid rgba(20, 20, 20, 0.788);
+  }
+  .product button:hover{
+    background-color: black;
+    color: white;
+  }
+  
+  
+  
+  
+  .product .button i {
+    padding-left: 10px;
+  }
+  .filter {
+    margin: 0 10px;
+    margin-top: 10px;
+    border-top: 1px solid rgb(199, 197, 197);
+    
+  }
+  .filter select {
+    width: 250px;
+    height: 30px;
+    margin-left: 8px;
+    margin-top: 10px;
+   
+  }
+  
+  
+  
+  .filter-child{
+    display: grid;
+    
+    
+  }
+  .offer-parent{
+    width: 90%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+  }
+  .display{
+    width: 90%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    padding-top: 80px;
+    padding-bottom: 50px;
+    
+  }
+  .display-child{
+    width: 25%;
+    height: 200px;
+    padding-left: 50px;
+  }
+  .display-child img{
+    width: 70%;
+    height: 150px;
+  }
+  .offer{
+    width: 33%;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    border-right: 1px solid grey;
+  }
+  .offer-child1{
+    width: 30%;
+    height: 100px;
+  }
+  .offer-child1 img{
+    width: 80%;
+    height: 90%;
+    padding-left: 7px;
+  }
+  .offer-child2{
+    width: 80%;
+    height: 90px;
+    margin: 10px;
+  }
+  .text{
+    font-size:25px;
+    display: flex;
+    padding: 10px;
+  }
+  .filter-child select{
+    height: 50px;
+    font-size: 17px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+  }
+  
+  .text select{
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: black;
+    border-radius: 5px;
+  }
+  .filter-child>button{
+    background-color: white;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #060606;
+    color: white;
+  }
+  .filter-child>button:active {
+    box-shadow: 0px 0px 0px white;
+    transform: translateY(3px);
+  }
+  .brand{
+    text-align: left;
+    text-transform: uppercase;
+    padding-top: 50px;
+    font-weight: bold;
+  }
+  
+  /* <!------------------- media queries starts here -------------------> */
+  
+  @media (max-width: 1200px) {
+  
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      max-width: 1240px;
+      
+    }
+    
+    
+   
+  }
+  
+  /* <!------------------- screen-1 ends here -------------------> */
+  
+  @media (max-width: 850px) {
+    
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+      max-width: 1240px;
+    }
+  }
+  
+  /* <!------------------- screen-2 ends here -------------------> */
+  
+  @media (max-width: 700px) {
+    .products {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 20px;
+      max-width: 1240px;
+    }
+    
+  }
+  
+  /* <!------------------- screen-3 ends here -------------------> */
+  
+  @media (max-width: 600px) {
+    .filter {
+      display: flex;
+    }
+    .box {
+      display: block;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 20px;
+      margin: 0 auto;
+      width: 95%;
+    }
+    .product img {
+      width: 90%;
+      margin: 0 auto;
+      display: block;
+    }
+    
+  }
+  
+  /* <!------------------- screen-4 ends here -------------------> */
+  
+  @media (max-width: 500px) {
+    .filter2-1 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .filter {
+      display: block;
+    }
+    
+  }
+  
+  /* <!------------------- screen-5 ends here -------------------> */
+  
+  @media (max-width: 350px) {
+    
+  }
+  
+  /* //   ---------------------*---------------------*---------------------*--------------------- */
+  

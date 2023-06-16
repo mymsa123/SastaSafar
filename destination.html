@@ -243,7 +243,7 @@
 
     function CreateCard(ele) {
         let card_main = document.createElement('div');
-        card_main.style.background = `url(${ele.image[0]})`
+        card_main.style.background = `url(${ele.image[1]})`
         card_main.className = "card-main-div";
         let card = document.createElement('div');
         card.className = "cardiv";
@@ -251,7 +251,7 @@
 
         card.innerHTML = `
                 <div class="img_slide">
-                   <img src="${ele.image[0]}" alt="img"  class="mainimg">
+                   <img src="${ele.image[2]}" alt="img"  class="mainimg">
                 </div>
                 <div class="details">
                     <div style="display:flex; justify-content:space-between; align-item:center"> 

@@ -7,9 +7,9 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="admin.css">
+	<link rel="stylesheet" href="manage.css">
 	<link rel="shortcut icon" href="logo-black.png" type="image/x-icon">
-	<title>Admin Page</title>
+	<title>AdminPage</title>
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 			<span class="text">Admin</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
+			<li>
 				<a href="admin.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
@@ -33,7 +33,7 @@
 					<span class="text">Users</span>
 				</a>
 			</li>
-			<li>
+			<li  >
 				<a href="trip.html">
 					<i class='bx bxs-car'></i>
 					<span class="text">Trips</span>
@@ -45,10 +45,10 @@
 					<span class="text">Add / Update</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="manage.html">
 					<i class='bx bxs-data' ></i>
-					<span class="text">Manage trips</span>
+					<span class="text">Manage Trips</span>
 				</a>
 			</li>
 		</ul>
@@ -69,8 +69,8 @@
 	<section id="content">
 		<!-- NAVBAR START-->
 		<nav>
-			<i class='bx bx-menu'></i>
-			<a href="#" class="nav-link">Categories</a>
+			<i class='bx bx-menu' ></i>
+			<a href="#" class="nav-link">Trips</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -84,101 +84,42 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard Analytics</h1>
+					<h1>Manage Trips</h1>
 				</div>
 			</div>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bxs-box' ></i>
-					<span class="text">
-						<h3 id="totaltrip"></h3>
-						<p>No. of Trips</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-book' ></i>
-					<span class="text">
-						<h3>2834</h3>
-						<p>Total trips</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-car' ></i>>
-					<span class="text">
-						<h3>2543</h3>
-						<p>Total achieved trips</p>
-					</span>
-				</li>
-			</ul>
+			
 
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Recent Orders</h3>
+						<h3>TRIPS</h3>
 						<i class='bx bx-search' ></i>
 						<i class='bx bx-filter' ></i>
 					</div>
 					<table>
 						<thead>
 							<tr>
-								<th>User</th>
-								<th>Date </th>
+								<th>Trip ID</th>
+								<th>Destination</th>
+								<th>Name</th>
+								<th>Duration</th>
 								<th>Price</th>
-								<th>Status</th>
+								<th>Delete</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>
-									Md Shabir Alam 
-								</td>
-								<td>23-01-2023</td>
-								<td>8000</td>
-								<td>Done</td>
-							</tr>
-							<tr>
-								<td>
-									Md adil 
-								</td>
-								<td>19-05-2022</td>
-								<td>3999</td>
-								<td>Pending</td>
-							</tr>
-							<tr>
-								<td>
-									Neha Singh
-								</td>
-								<td>22-01-2023</td>
-								<td>9000</td>
-								<td>Done</td>
-							</tr>
-							<tr>
-								<td>
-									Achal Gaddamwar
-								</td>
-								<td>22-01-2023</td>
-								<td>25500</td>
-								<td>Cancelled</td>
-							</tr>
-							<tr>
-								<td>
-									Priya Patole
-								</td>
-								<td>22-01-2023</td>
-								<td>5000</td>
-								<td>Pending</td>
-							</tr>
+						<tbody id="tripDetails">
 						</tbody>
 					</table>
-				</div>	
-		</main>  
+				</div>
+				
+		</main>
 		<!-- MAIN PART END -->
 	</section>
 	<!-- CONTENT PART END -->
 	
 
-	<script src="admin.js"></script>
+	<script src="manage.js"></script>
 </body>
 </html>

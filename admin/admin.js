@@ -1,6 +1,6 @@
 // Accesing All The elements From Html
-let baseurl=
-let TotalProductCount=document.getElementById("totalProducts")
+let baseurl=`https://648977ba5fa58521caafa573.mockapi.io`
+let TotalProductCount=document.getElementById("totaltrip")
 
 // Getting Number of Products
 fetch(`${baseurl}/tours`)
