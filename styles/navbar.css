@@ -319,3 +319,12 @@ border-width: 5px;
 border-style: solid;
 border-color: transparent rgb(74, 71, 255) transparent transparent;
 }
+
+
+@media only screen and (max-width: 600px) {
+
+  .navbar, .navbar2{
+  display: none;
+  }
+
+}

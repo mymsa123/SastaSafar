@@ -1,116 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://kit.fontawesome.com/7a4d6432b5.js"
+    crossorigin="anonymous"
+  ></script>
     <title>Document</title>
-    <link rel="stylesheet" href="styles/navbar.css"> 
-    <link rel="stylesheet" href="styles/viewDetails.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <!-- <link rel="stylesheet" href="styles/viewDetails.css"> -->
 </head>
+
+<style>
+    body{
+        background: #7693fb;
+    }
+    .carausol-slider{
+
+
+        margin: 100px 30px 30px;
+        display: flex;
+        justify-content: center;
+        /* padding: 30px; */
+        gap: 30px;
+        
+    }
+.carousel {
+  position: relative;
+  width:600px;
+  overflow: hidden;
+  flex-grow: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  /* padding: 30px; */
+  /* margin-top: 130px; */
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.carousel-prev{
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    left: 30px;
+    transform: translate(-50% , -50%);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.carousel-next{
+    
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 30px);
+    transform: translate(-50% , -50%);
+    border-radius: 50%;
+    width: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.service-btn {
+  width: max-content;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  margin: 10px 0;
+  text-align: center;
+  border: none;
+  background-size: 300% 100%;
+  padding: 10px 20px;
+  text-decoration: none;
+
+  border-radius: 50px;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.service-btn:hover {
+  background-position: 100% 0;
+  moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.service-btn {
+  background-image: linear-gradient(
+    to right,
+    #ff6e30,
+    #ff6456,
+    #ff9c6b,
+    #cc4f38
+  );
+  /* box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75); */
+  background-image: linear-gradient(
+    to right,
+    #eb7d42,
+    #e43603,
+    #fa7199,
+    #e85a19
+  );
+}
+
+#description::-webkit-scrollbar {
+    display: none;
+}
+#description{
+    width: 600px;
+    /* background-color: rgb(196, 223, 255); */
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 30px;
+  height: 500px;
+  overflow-y: scroll;
+  color: #183282;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  background: white;
+}
+.fa-angle-down, .fa-angle-up{
+    visibility: hidden;
+}
+#foot_parent{
+    border-radius: 0;
+}
+</style>
+
 <body>
-    <nav class="navbar">
-        <div class="logo">Summer Trip</div>
-        <ul class="nav-menu">
-          <a href=""><i class="fa-solid fa-box-open"></i> Home</a>
-          <a href="">About</a>
-          <a href="">Service</a>
-        </ul>
-      </nav> 
-      
-    <header id="header"></header>
-    <section id="imgslider">
-        <div class="w3-content w3-display-container">
-            <!-- <div class="w3-display-container mySlides">
-                <img src="img_snowtops.jpg" style="width:100%">
-            </div> -->
+    <nav id="nav_parent" class="navbar"></nav>
+
+    <div class="carausol-slider">
+        <div class="carousel">
+            <div class="carousel-inner" id="package_parent"></div>
+            <button class="carousel-prev service-btn" >❮</button>
+            <button class="carousel-next service-btn">❯</button>
         </div>
-    </section>
-    <section id="description">
-        <div id="maindescr">
-            <!-- <div id="fetchdescr">
-                <h1>Package name</h1>
-                <p><span><i class="fa-solid fa-clock fa-spin"></i></span> Duration</p>
-                <p><span><i class="fa-solid fa-location-dot fa-flip"></i></span> Location</p>
-                <h2>Tour Itinerary</h2>
-                <div>
-                    <details>
-                        <summary onclick="changeArrow()">Description <i class="fa-sharp fa-solid fa-angle-down"></i>
-                        </summary>
-                        <ul>
-                            <li>Hello</li>
-                            <li>World</li>
-                        </ul>
-                    </details>
+        
+        <section id="description">
+            <div id="maindescr"></div>
+            <div id="pricedescr">
+                <div id="pricecard">
+                    <p>₹ <span id="priceshow">Cost</span> per adult onwards</p>
+                    <button class="service-btn" id="booknow">Book Now</button>
                 </div>
-            </div> -->
-            <!-- <div id="staticdescr">
-                <h3>Meals & other inclusions</h3>
-                <ul>
-                    <li>Accommodation on a double share basis.</li>
-                    <li>Daily breakfast at all places except on the day of arrival.</li>
-                    <li>All transfers and sightseeing by AC vehicle - AC Indigo (02 - 03 Pax)/AC Innova (04- 06 Pax)/AC
-                        Tempo Traveller (07-09 Pax)</li>
-                    <li>Parking charges, toll and driver's allowance.</li>
-                    <li>Government service tax additional on above cost.</li>
-                </ul>
-                <h3>Exclusions</h3>
-                <ul>
-                    <li>Any airfare/train fare.</li>
-                    <li>Supplementary charges during high peak times may change as per the hotel's policy.</li>
-                    <li>Gala dinner charges during Christmas and New Year's Eve.</li>
-                    <li>Any jeep safari/elephant ride.</li>
-                    <li>Any other meals not mentioned in the package inclusions.</li>
-                    <li>Any other destination not mentioned in Itinerary.</li>
-                    <li>Any expenses of personal nature such as laundry, room service, minibar, telephone calls, etc.
-                    </li>
-                    <li>Porterage charges, pony charges, guide, entrance fees, camera fee, ropeway fee.</li>
-                    <li>Any other expenses incurred due to bad weather, road closure, landslides or local political
-                        conditions, etc.</li>
-                    <li>Early check-in and late check-out will be subject to availability of rooms and direct payment
-                        basis only.</li>
-                </ul> -->
-
-                <!-- <section id="similar">
-                    <h3>Similar Packages</h3>
-                    <div id="similardiv">
-                       
-                    </div>
-                </section> -->
-            <!-- </div> -->
-        </div>
-        <div id="pricedescr">
-            <div id="pricecard">
-                <p>₹ <span id="priceshow">Cost</span> per adult onwards</p>
-
-
-                <!-- <p><b>What's included in the price</b></p> -->
-                <!-- <div id="icondiv">
-                    <div id="icon1">
-                        <p><i class="fa-solid fa-bed"></i><b> Twin-sharing<br> rooms</b></p>
-                    </div>
-                    <div id="icon2">
-                        <p><i class="fa-solid fa-car"></i><b> Private AC cab <br> with driver</b></p>
-                    </div>
-                    <div id="icon3">
-                        <p><i class="fa-solid fa-eye"></i><b> Sightseeing in <br>a private AC cab</b></p>
-                    </div>
-                    <div id="icon4">
-                        <p><i class="fa-solid fa-utensils"></i><b> Breakfast</b></p>
-                    </div>
-                </div>
-                <p><i class="fa-solid fa-circle-exclamation"></i> Final price will be shared by our partner agents based
-                    on your requirements</p> -->
-                <button id="booknow">Book Now</button>
-
-
-
             </div>
-        </div>
+        </section>
+    </div>
 
-    </section>
+        <div class="footer" id="foot_parent"></div>
 
 </body>
+<script src="navbar.js"></script>
 <script>
 
 
@@ -128,72 +196,28 @@
 
         let fetchdescr = document.querySelector("#fetchdescr");
         let priceshow = document.querySelector('#priceshow');
-        let imgslider = document.querySelector('#imgslider');
         let similardiv = document.querySelector("#similardiv");
 
         const API = "https://trypot-nation-dkah.onrender.com/packages";
 
-        let slider_div = document.querySelector('.w3-content');
+        let slider_div = document.querySelector('#package_parent');
         fetchData();
 
 
-        async function fetchData() {
-            try {
-                let res = await fetch(`${API}?id=${package_id}`);
-                let data = await res.json();
-                // console.log(data[0]);
-                // imgdata
-                let imgarray = data[0].image;
-                slider_div.innerHTML = "";
-                imgarray.forEach(element => {
-                    slider_div.append(CreateImageSlider(element));
-                });
-                slider_div.innerHTML = slider_div.innerHTML + `<button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="w3-button w3-display-right" onclick="plusDivs(1)">&#10095;</button>`;
+        function fetchData() {
+            let data = package_id;
+            console.log(data);
+            // imgdata
+            let imgarray = data.image;
+            slider_div.innerHTML = "";
+            imgarray.forEach(element => {
+                slider_div.append(CreateImageSlider(element));
+            });
 
-                // maindata
-                Adddata(data[0]);
-                // similarData(data[0].destination);
-
-
-            } catch (error) {
-                console.log(error);
-
-            }
+            // maindata
+            Adddata(data);
         }
 
-
-        async function similarData(desti) {
-            try {
-                let res = await fetch(`${API}?destination=${desti}`);
-                let data = await res.json();
-                similardiv.innerHTML = "";
-                data.forEach((element) => {
-                    similardiv.append(CreateSimilarCard(element));
-                    // similardiv.innerHTML = similardiv.innerHTML+ CreateSimilarCard(element);
-                })
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        function CreateSimilarCard(element) {
-            let similar_card = document.createElement('div');
-            similar_card.className = "similar_card";
-            similar_card.innerHTML = `<img src="${element.image[0]}" alt="">
-                            <p>${element.duration}</p>
-                            <h4>${element.title}</h4>
-                            <p><span>${element.price}</span> per adult</p>
-                            <button class="views_limilar">View Details</button>`;
-
-            // let viewslimilar = div.querySelector(".viewslimilar");
-            // viewslimilar.addEventListener('click', ()=>{
-            //     localStorage.setItem('package_id', element.id);
-            //     reload();
-            // });
-
-            return similar_card;
-
-        }
         function Adddata(data) {
             priceshow.textContent = data.price;
             let fetchdescr = document.createElement('div');
@@ -245,48 +269,57 @@
         }
         function CreateImageSlider(element) {
             let div = document.createElement('div');
-            div.className = "w3-display-container mySlides";
-            div.innerHTML = `<img src="${element}" class="slider_img" >`;
+            // div.className = "w3-display-container mySlides";
+            // div.innerHTML = `<img src="${element}" class="slider_img" >`;
+            div.className = "carousel-item active";
+            div.innerHTML = `
+                <div class="s-card" >
+                    <div class="abcde">
+                        <img src="${element}">
+                        
+                    </div>
+            </div>`;
             return div;
         }
 
-
-
-        
-
         // slider
-        var slideIndex = 1;
-        setTimeout(() => {
-            showDivs(slideIndex);
-        }, 2000);
+  //   carausol code
 
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
+  function carausolsetting() {
+    const carouselInner = document.querySelector(".carousel-inner");
+    const carouselItems = document.querySelectorAll(".carousel-item");
+    const carouselItemWidth = carouselItems[0].offsetWidth;
+    let currentIndex = 0;
+    const prevButton = document.querySelector(".carousel-prev");
+    const nextButton = document.querySelector(".carousel-next");
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            x[slideIndex - 1].style.display = "block";
-        }
+    function slideNext() {
+      if (currentIndex === carouselItems.length - 1) {
+        currentIndex = 0;
+      } else {
+        currentIndex = currentIndex + 1;
+      }
+      carouselInner.style.transform = `translateX(-${
+        currentIndex * carouselItemWidth
+      }px)`;
+    }
 
+    function slidePrev() {
+      if (currentIndex === 0) {
+        currentIndex = carouselItems.length - 1;
+      } else {
+        currentIndex = currentIndex - 1;
+      }
+      carouselInner.style.transform = `translateX(-${
+        currentIndex * carouselItemWidth
+      }px)`;
+    }
 
-        document.querySelector('#booknow').addEventListener('click', () => {
-            let user = JSON.parse(localStorage.getItem('user')) || [];
-
-            if(user.length === 0){
-                alert('Please login first');
-                window.location.href = "login.html";
-            }else{
-                window.location.href = "user_checkout.html";
-            }
-
-        })
+    nextButton.addEventListener("click", slideNext);
+    prevButton.addEventListener("click", slidePrev);
+    // setInterval(slideNext, 5000);
+  }
+  carausolsetting();
     }
 
 
@@ -298,4 +331,5 @@
 
 </script>
 </body>
+
 </html>
