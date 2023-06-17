@@ -33,8 +33,6 @@ function addNavbarToPage() {
         <a href=""><i class="fa-solid fa-info-circle"></i> About</a>
     </ul>
     
-
-
     <div class="login-nav-cont">
         <div id="search-data-div"></div>
         ${loginSectionHTML} <!-- Here the loginSectionHTML variable is used -->
@@ -42,10 +40,13 @@ function addNavbarToPage() {
             <img src="assets/man.png" alt="">
             <span class="Name"></span>
         </div>
+        <i class="fa-solid fa-bars close" id="nav-toggle"></i>
     </div>`;
 
 
 
+    if (foot_parent) {
+        
     foot_parent.innerHTML = `
     <div class="footer-info">
     <div class="footer-social">
@@ -108,6 +109,7 @@ function addNavbarToPage() {
 
   </div>`
 }
+}
 
 function logout() {
     localStorage.setItem("isLoggedIn", "false");
@@ -118,3 +120,29 @@ function logout() {
 addNavbarToPage()
 let a = document.getElementById("nav_parent").offsetHeight
 document.querySelector("body").style.marginTop = `${a}px`
+
+let nav_toggle = document.getElementById("nav-toggle")
+let nav_menu = document.querySelector(".nav-menu")
+let navbar2 = document.querySelector(".navbar2")
+
+nav_toggle.addEventListener("click" , ()=>{
+    console.log(nav_menu.style.right);
+    if (nav_menu.style.right == "0px") {
+        nav_menu.style.right = "100%"
+        console.log('hell');
+        if (navbar2) {
+            navbar2.style.left = "100%"
+        }
+        
+        
+    }
+    else  {
+        nav_menu.style.right = "0px"
+        console.log('hell1');
+            
+            if (navbar2) {
+                navbar2.style.left = "0px"
+            }
+        
+    }
+})

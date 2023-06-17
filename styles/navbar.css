@@ -20,6 +20,7 @@ button {
   gap: 20px;
   background: #183282;
   align-items: center;
+  justify-content: space-between;
 }
 .navbar a {
   text-decoration: none;
@@ -319,12 +320,77 @@ border-width: 5px;
 border-style: solid;
 border-color: transparent rgb(74, 71, 255) transparent transparent;
 }
-
-
-@media only screen and (max-width: 600px) {
-
-  .navbar, .navbar2{
+.nav-menu i{
+  margin-right: 5px;
+}
+#nav-toggle{
   display: none;
+}
+
+@media only screen and (max-width: 930px) {
+
+  .nav-menu{
+    position: fixed;
+    background: #142347;
+    right: 100%;
+    top: 64px;
+    height: 100vh;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: right 0.5s ease-in-out;
+    padding: 0;
+  }
+  #nav-toggle{
+    display: block;
+  }
+
+
+
+
+
+
+
+}
+@media only screen and (max-width: 690px) {
+
+  .nav-menu{
+    gap: 0;
+  }
+
+  .navbar2{
+    left: 100%;
+    z-index: 1000;
+    height: calc(100vh - 300px);
+    overflow-y: scroll;
+    top: 300px;
+    justify-content: flex-start;
+    width: 100%;
+    transition: left 0.5s ease-in-out;
+    border-top-left-radius: 37px;
+    border-top-right-radius: 37px;
+  }
+  .navbar2 img{
+    width: 18px;
+  }
+  .navbar2 .tooltip .tooltiptext{
+    margin-left: 5px;
+    visibility: visible;
+    position: static; 
+    background: none;
+  }
+  .navbar2> div{
+    align-items: flex-start;
+  }
+
+  .foot-correct{
+    margin: 20px 15px;
+    width: calc(100% - 30px);
+    padding: 0;
+  }
+  .footer-details{
+    flex-wrap: wrap;
   }
 
 }
