@@ -267,14 +267,16 @@
                         <p id="price">RS: ${ele.price}</p>
                     </div>
                     <div class="btndiv">
-                        <button class="btn" onclick="AddToCart(${ele.id})">Book Now</button>
-                        <button class="btn">View Details</button>
+                        <button class="bookbtn" onclick="AddToCart(${ele.id})">Book Now</button>
+                        <button class="viewbtn">View Details</button>
                     </div>
                 </div>`;
 
 
-        let detail = card.querySelector('.details');
+        let detail = card.querySelector('.viewbtn');
         detail.addEventListener('click', () => {
+// <<<<<<< Day5_fw26_039
+//          localStorage.setItem('package_id', ele.id);
             localStorage.setItem('package_id', JSON.stringify(ele));
             window.location.href = "viewDetails.html";
         });
@@ -286,7 +288,7 @@
     }
     function AddToCart(ids) {
         localStorage.setItem('package_id', ids);
-        window.location.href = "user_checkout.html";
+        window.location.href = "checkout.html";
     }
 
     pricefilter.addEventListener('click', (event) => {
@@ -335,6 +337,8 @@
             DisplayData(filtered);
         }
     });
+
+    
 
     // durationfilter.addEventListener('click', (event) => {
     //     if (event.target.value !== undefined) {

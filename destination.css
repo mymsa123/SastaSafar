@@ -61,7 +61,7 @@ body{
   width: auto;
 }
 
-.btn {
+.btn , .bookbtn, .viewbtn{
   width: fit-content;
 }
 
@@ -119,7 +119,7 @@ body{
 .footer-info .search{
     background: linear-gradient(45deg, #3c3c3c, #212222);
 }
-.btn {
+.btn , .bookbtn, .viewbtn {
     width: max-content;
     font-size: 16px;
     font-weight: 600;
@@ -139,7 +139,7 @@ body{
     transition: all 0.4s ease-in-out;
   }
   
-  .btn:hover {
+  .btn:hover , .bookbtn:hover, .viewbtn:hover{
     background-position: 100% 0;
     moz-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
@@ -147,7 +147,7 @@ body{
     transition: all 0.4s ease-in-out;
   }
   
-  .btn {
+  .btn , .bookbtn, .viewbtn{
     background-image: linear-gradient(
       to right,
       #ff6e30,
@@ -164,6 +164,8 @@ body{
       #e85a19
     );
   }
+
+  
 
 #nav_parent{
     backdrop-filter: blur(15px);
