@@ -25,9 +25,9 @@ function addNavbarToPage() {
     }
 
     nav_parent.innerHTML = `
-    <div class="logo"><img src="assets/logo-home.svg" alt=""></div>
+    <div class="logo"> <a href="/index.html"><img src="assets/logo-home.svg" alt=""></a></div>
     <ul class="nav-menu">
-        <a href="/"><i class="fa-solid fa-box-open"></i> Home</a>
+        <a href="/index.html"><i class="fa-solid fa-box-open"></i> Home</a>
         <a href="/destination.html"><i class="fa-solid fa-car"></i> Destination</a>
         <a href=""><i class="fa-solid fa-box"></i>  View Details</a>
         <a href=""><i class="fa-solid fa-info-circle"></i> About</a>

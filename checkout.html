@@ -34,14 +34,14 @@
                     <div id="dateSelection">
                         <select name="selectDate" id="chooseDate">
                             <option value="">Choose Date</option>
-                            <option value="2023/06/14">Wed June 14, 2023</option>
-                            <option value="2023/06/27">Sat June 27, 2023</option>
-                            <option value="2023/06/31">Wed June 31, 2023</option>
+                            <option value="2023/06/30">Fri June 30, 2023</option>
+                            <option value="2023/07/04">Tue July 4, 2023</option>
+                            <option value="2023/07/10">Mon July 10, 2023</option>
                         </select>
                     </div>
                     <div id="confirmationButton">
-                    <button onclick="finalizeBooking()">Book Now</button>
-                </div>
+                        <button onclick="finalizeBooking()">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,13 +84,14 @@
             }
         }
 
-        function selectPayment(value) {
-            if (value == "cash") {
-                paymentDetails.textContent = "Note: You have to pay on Arrival";
-            }else {
-                paymentDetails.textContent = "Please use the cash option to pay";
-            } 
-        }
+        // function selectPayment(value) {
+        //     if (value == "cash") {
+        //         paymentDetails.textContent = "Note: You have to pay on Arrival";
+        //     }
+        //     else {
+        //         paymentDetails.textContent = "Please use the cash option to pay";
+        //     } 
+        // }
 
         async function fetchPackageData() {
             try {
