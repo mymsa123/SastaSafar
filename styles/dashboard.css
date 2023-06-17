@@ -1,0 +1,90 @@
+body{
+    background: rgb(153, 209, 255);
+}
+
+#dashboard-page{
+    /* height: 600px; */
+    margin-left: 70px;
+    padding: 15px;
+    padding-bottom: 0;
+    grid-template-columns: auto 300px;
+    display: grid;
+    gap: 15px;
+}
+#dashboard-details{
+    height: calc(100vh - 90px);
+    background: lightblue;
+    background: rgb(5, 11, 44);
+    background: #102565;
+    background: #7693fb;
+    border-radius: 14px;
+    padding: 30px;
+    color: white;
+}
+
+#dashboard-details > h2{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+#dashboard-details > p{
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.card-cont1{
+display: grid;
+grid-template-columns: repeat(3 , calc(33.33% - 16px));
+justify-content: space-between;
+height: calc(50% - 12px - 40px);
+grid-template-rows: 100%;
+gap: 24px;
+margin-bottom: 24px;
+}
+.card{
+    background: rgb(153, 209, 255);
+    background: rgb(7, 17, 49);
+    border: 1px solid black; 
+    border-radius: 20px;
+    padding: 25px;
+    /* height: max-content; */
+}
+.card img{
+width: 100%;
+height: 80%;
+border-radius: 20px;
+object-fit: cover;
+}
+.card-cont2{
+    display: grid;
+    grid-template-columns: repeat(2 , calc(50% - 12px));
+    grid-template-rows: repeat(2, calc(50% - 12px));
+    /* justify-content: space-between; */
+    height: calc(50% - 12px - 50px);
+    gap: 24px;
+    }
+.card-dis{
+    background: rgb(7, 17, 49);
+    border: 1px solid black; 
+    border-radius: 20px;
+    display: flex;
+    padding: 15px;
+    gap: 20px;
+    /* height: 10%; */
+}
+.card-dis>img{
+    height: 100%;
+    border-radius: 20px;
+}
+.bookings{
+    background: white;
+    background: #102565;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height: calc(100vh - 90px);
+    overflow: scroll;
+}
+.bookings>img{
+    width: 100%;
+}
