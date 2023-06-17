@@ -275,8 +275,8 @@
 
         let detail = card.querySelector('.details');
         detail.addEventListener('click', () => {
-            localStorage.setItem('package_id', ele.id);
-            window.location.href = "user_package_view.html";
+            localStorage.setItem('package_id', JSON.stringify(ele));
+            window.location.href = "viewDetails.html";
         });
         card_main.append(card)
         return card_main;
