@@ -275,7 +275,9 @@
 
         let detail = card.querySelector('.viewbtn');
         detail.addEventListener('click', () => {
-            localStorage.setItem('package_id', ele.id);
+// <<<<<<< Day5_fw26_039
+//          localStorage.setItem('package_id', ele.id);
+            localStorage.setItem('package_id', JSON.stringify(ele));
             window.location.href = "viewDetails.html";
         });
         card_main.append(card)

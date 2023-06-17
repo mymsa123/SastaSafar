@@ -1,7 +1,7 @@
 body{
     background: #aec2ff;
     background: #7693fb;
-    background: rgb(155 155 155);
+    /* background: rgb(155 155 155); */
 }
 /* side */
 #side {
@@ -13,6 +13,7 @@ body{
     color: white;
     left: 30px;
     border-radius: 8px;
+    background: linear-gradient(45deg, rgb(14,28,72), rgba(14,28,72,0.8));
 }
 #sortingdata,
 #filteringdata {
@@ -82,10 +83,12 @@ body{
   height: 270px;
   border-radius: 37px;
   object-fit: cover;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
 }
 .card-main-div{
     border-radius: 37px;
     overflow: hidden;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 .cardiv {
 
@@ -95,7 +98,7 @@ body{
   position: relative;
   padding: 20px;
   backdrop-filter: blur(15px);
-  background: rgba(0,0,0, 0.7);
+  background: rgba(14,28,72, 0.8);
   height: 100%;
 }
 .details {
@@ -111,7 +114,7 @@ body{
 }
 
 .footer-info{
-    background: linear-gradient(45deg, black, #212222);
+    background: linear-gradient(45deg, rgb(14,28,72), rgba(14,28,72,0.6));
 }
 .footer-info .search{
     background: linear-gradient(45deg, #3c3c3c, #212222);
@@ -166,7 +169,7 @@ body{
 
 #nav_parent{
     backdrop-filter: blur(15px);
-    background: rgba(0,0,0, 0.8);
+    background: rgba(14,28,72, 0.8);
 }
 
 .btndiv{

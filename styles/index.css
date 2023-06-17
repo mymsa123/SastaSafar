@@ -364,3 +364,36 @@
 body{
   background: #aec2ff;
 }
+
+
+@media only screen and (max-width: 600px) {
+
+  .header {
+    display: grid;
+    grid-template-columns: 100% auto;
+    background-color: rgb(197, 197, 112);
+    /* height: max-content; */
+    /* padding: 10px 50px 50px 50px; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* column-gap: 50px; */
+    /* color: #ffffff; */
+    /* background: linear-gradient(-90deg, #f7f6f0, #eceadd); */
+    /* background: linear-gradient(-90deg, #e5e1ff, #d0c8ff); */
+    /* background: #7693fb; */
+    /* margin-left: 70px; */
+    /* margin-top: 60px; */
+  }
+  /* .abcd {
+    height: 200px;
+    object-fit: contain;
+    border-radius: 37px;
+  }
+  .h-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  } */
+
+}

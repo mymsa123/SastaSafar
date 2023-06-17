@@ -25,7 +25,7 @@ function addNavbarToPage() {
     }
 
     nav_parent.innerHTML = `
-    <div class="logo">Summer Trip</div>
+    <div class="logo"><img src="assets/logo-home.svg" alt=""></div>
     <ul class="nav-menu">
         <a href="/"><i class="fa-solid fa-box-open"></i> Home</a>
         <a href="/destination.html"><i class="fa-solid fa-car"></i> Destination</a>
@@ -39,7 +39,7 @@ function addNavbarToPage() {
         <div id="search-data-div"></div>
         ${loginSectionHTML} <!-- Here the loginSectionHTML variable is used -->
         <div class="flex-div">
-            <img src="assets/himalya.jpg" alt="">
+            <img src="assets/man.png" alt="">
             <span class="Name"></span>
         </div>
     </div>`;
