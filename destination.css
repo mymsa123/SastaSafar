@@ -202,3 +202,52 @@ body{
   padding: 10px 20px;
   border: none;
 }
+
+@media only screen and (max-width: 930px) {
+
+  .nav-menu{
+    position: fixed;
+    background: #142347;
+    right: 100%;
+    top: 64px;
+    height: 100vh;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: right 0.5s ease-in-out;
+    padding: 0;
+  }
+  #nav-toggle{
+    display: block;
+  }
+
+  #side{
+    display: none;
+  }
+  #content{
+    margin: 0;
+    grid-template-columns: repeat(auto-fit, 350px);
+  }
+  #content .img_slide img{
+    height: 200px;
+  }
+  .foot-correct{
+    margin: 0;
+    width: 100%;
+  }
+
+  
+
+
+
+
+
+
+}
+@media only screen and (max-width: 630px) {
+
+  #searchbar input{
+    width: 110px;
+  }
+}

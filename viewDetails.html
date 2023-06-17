@@ -292,8 +292,11 @@
     let currentIndex = 0;
     const prevButton = document.querySelector(".carousel-prev");
     const nextButton = document.querySelector(".carousel-next");
-
+    
     function slideNext() {
+      const carouselInner = document.querySelector(".carousel-inner");
+      const carouselItems = document.querySelectorAll(".carousel-item");
+      const carouselItemWidth = carouselItems[0].offsetWidth;
       if (currentIndex === carouselItems.length - 1) {
         currentIndex = 0;
       } else {
@@ -305,6 +308,9 @@
     }
 
     function slidePrev() {
+      const carouselInner = document.querySelector(".carousel-inner");
+      const carouselItems = document.querySelectorAll(".carousel-item");
+      const carouselItemWidth = carouselItems[0].offsetWidth;
       if (currentIndex === 0) {
         currentIndex = carouselItems.length - 1;
       } else {
