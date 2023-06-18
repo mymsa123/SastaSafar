@@ -12,7 +12,7 @@ function addNavbarToPage() {
         loginSectionHTML = `
             <div class="profile-nav-btn flex-div">
                 <span>${currentUser}</span>
-                <button onclick="logout()">Logout</button>
+                <button onclick="logout()" id= "logout">Logout</button>
             </div>
         `;
     } else {

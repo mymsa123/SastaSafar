@@ -47,6 +47,15 @@ button {
   background: linear-gradient(45deg, #7cb4fe, #529cfc);
   background: linear-gradient(-45deg, #ff593c, #fe8d3a);
 }
+
+#logout {
+  background: #183282;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
 .footer {
   display: flex;
   justify-content: center;
