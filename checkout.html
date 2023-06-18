@@ -6,6 +6,7 @@
     <title>Checkout Page</title>
     <link rel="stylesheet" href="styles/navbar.css" />
     <link rel="stylesheet" href="styles/checkout.css" />
+    <link rel="stylesheet" href="styles/loader.css">
 </head>
 
 <body>
@@ -14,9 +15,7 @@
     <section id="mainSection">
         <h2>Order Summary</h2>
         <div class="overallContainer">
-            <div class="chosenPackage">
-               
-            </div>
+            <div class="chosenPackage"></div>
             <div class="cartInfo">
                 <div class="bookingInfo">
                     <h3>Finalize Booking</h3>
@@ -45,8 +44,13 @@
                 </div>
             </div>
         </div>
-
     </section>
+    <nav id="foot_parent" class="navbar"></nav>
+
+    <div id="spinner-overlay" style="display: none;">
+        <div id="spinner" class="spinner"></div>
+    </div>
+
 </body>
 <script>
     let chosenPackage = document.querySelector('.chosenPackage');
@@ -57,19 +61,27 @@
 
     let newBookingDate = new Date();
 
-    const API = "https://trypot-nation-dkah.onrender.com/packages";
+    const API = "https://648977ba5fa58521caafa573.mockapi.io/tours";
 
-    let package_id = localStorage.getItem("package_id") || [];
+    let package_id = localStorage.getItem("package_id") || null;
 
-    if (package_id.length === 0) {
+    if (package_id === null) {
         orderSummary.textContent = "No Package Selected";
         chosenPackage.innerHTML = null;
-    } else {
-
-        fetchPackageData();
+    }
+    else {
         let confirmation_data = {}
+        fetchPackageData();
 
         function finalizeBooking (){
+            let spinnerOverlay = document.getElementById('spinner-overlay');
+
+            if (localStorage.getItem("isLoggedIn") === "false" || !localStorage.getItem("isLoggedIn")) {
+                alert("Please log in first.");
+                window.location.href = "login.html";
+                return;
+            }
+
             if(paymentDetails.textContent == ""){
                 alert("Please select a payment method");
             }else if(chooseDate.value == ""){
@@ -102,36 +114,34 @@
                     localStorage.setItem("confirmation_data" , JSON.stringify([trp_confirm]))
 
                 }
+                spinnerOverlay.style.display = 'flex';
+
+                setTimeout(function() {
+                    spinnerOverlay.style.display = 'none';
+                    alert('Booking Successful!');
+                    window.location.href = 'index.html';
+                }, 5000);
             }
         }
 
         function selectPayment(value) {
             if (value == "cash") {
                 paymentDetails.textContent = "Note: You have to pay on Arrival";
-            }
-            else {
+            } else {
                 paymentDetails.textContent = "Please use the cash option to pay";
             } 
         }
 
-
         async function fetchPackageData() {
             try {
-                let res = await fetch(`${API}?id=${package_id}`);
+                let res = await fetch(`${API}/${package_id}`);
                 let data = await res.json();
                 chosenPackage.innerHTML = null;
-                data.forEach(element => {
-                    chosenPackage.append(createPackageCard(element));
-                    confirmation_data = element
-                });
-
-
-
-
+                chosenPackage.append(createPackageCard(data));
+                confirmation_data = data
             } catch (error) {
                 console.log(error);
             }
-
         }
 
         function createPackageCard(element) {
@@ -182,7 +192,6 @@
         }
     }
 </script>
-
 <script src="navbar.js"></script>
 <!-- <script src="checkout.js"></script> -->
 </html>
