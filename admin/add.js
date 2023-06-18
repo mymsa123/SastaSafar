@@ -36,7 +36,7 @@ AddButton.addEventListener("click",()=>{
         destination:Destination.value,
         description:Desc.value,
         price:"Rs"+Price.value,
-        image:Image.value,
+        image:[Image.value],
         name:Name.value,
         id:Id.value,
         Size:[8,8.5,9,10,10.5,11,13],
