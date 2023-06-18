@@ -67,6 +67,7 @@
     } else {
 
         fetchPackageData();
+        let confirmation_data = {}
 
         function finalizeBooking (){
             if(paymentDetails.textContent == ""){
@@ -75,23 +76,44 @@
                 alert("Please select a date");
             }else{
                 let package_name = document.querySelector('.packageInformation > h3');
+                
                 console.log({
                     package_name : package_name.textContent,
                     tourdate : chooseDate.value,
                     timestamp : String(newBookingDate),
-                    bill : Number(finalCost.textContent)
+                    bill : Number(finalCost.textContent),
                 });
+
+                let trp_confirm = {
+                    package_name : package_name.textContent,
+                    tourdate : chooseDate.value,
+                    timestamp : String(newBookingDate),
+                    bill : Number(finalCost.textContent),
+                    tour_data: confirmation_data
+                }
+                let confirmation_data_local = JSON.parse(localStorage.getItem("confirmation_data"))
+                if (confirmation_data_local) {
+                    
+                    confirmation_data_local.push(trp_confirm)
+                   
+                    localStorage.setItem("confirmation_data" , JSON.stringify(confirmation_data_local))
+                }
+                else{
+                    localStorage.setItem("confirmation_data" , JSON.stringify([trp_confirm]))
+
+                }
             }
         }
 
-        // function selectPayment(value) {
-        //     if (value == "cash") {
-        //         paymentDetails.textContent = "Note: You have to pay on Arrival";
-        //     }
-        //     else {
-        //         paymentDetails.textContent = "Please use the cash option to pay";
-        //     } 
-        // }
+        function selectPayment(value) {
+            if (value == "cash") {
+                paymentDetails.textContent = "Note: You have to pay on Arrival";
+            }
+            else {
+                paymentDetails.textContent = "Please use the cash option to pay";
+            } 
+        }
+
 
         async function fetchPackageData() {
             try {
@@ -100,7 +122,11 @@
                 chosenPackage.innerHTML = null;
                 data.forEach(element => {
                     chosenPackage.append(createPackageCard(element));
+                    confirmation_data = element
                 });
+
+
+
 
             } catch (error) {
                 console.log(error);

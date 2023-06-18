@@ -17,11 +17,11 @@
     <div class="navbar2">
       <p>Menu</p>
       <div>
-        <a class="tooltip" href="#">
+        <a class="tooltip" href="dashboard.html">
           <img src="assets/most-recent.png" alt="" />
           <span class="tooltiptext">Dashboard</span>
         </a>
-        <a class="tooltip" href="#">
+        <a class="tooltip" href="message.html">
           <img src="assets/subscription.png" alt="" />
           <span class="tooltiptext">My Tickets</span>
         </a>
@@ -57,67 +57,45 @@
 
     <div id="dashboard-page">
       <div id="dashboard-details">
-        <h2>Lorem, ipsum dolor.</h2>
-        <p>Lorem, ipsum. Lorem ipsum dolor sit amet.</p>
+        <h1>Hello <span id="User-name">Mohd Adil</span></h1>
+        <p>Welcome Back and Explore The world</p>
+        <h2>Easy Visa Destination</h2>
         <div class="card-cont1">
-          <div class="card">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
+          <div  class="card">
+            <img src="assets/Thailand.jpg" alt="" />
+            <div class="abcdef">
+              <p>Thailand</p>
             </div>
           </div>
           <div class="card">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
+            <img src="assets/dubai.jpg" alt="" />
+            <div class="abcdef">
+              <p>Dubai</p>
             </div>
           </div>
           <div class="card">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
+            <img src="assets/switzerland.jpg" alt="" />
+            <div class="abcdef">
+              <p>Switzerland</p>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/philip.jpg" alt="" />
+            <div class="abcdef">
+              <p>Philippines</p>
+
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/Singapore.jpg" alt="" />
+            <div class="abcdef">
+              <p>Singapore</p>
             </div>
           </div>
         </div>
-        <p>Lorem, ipsum.</p>
+        <h2>Special Offers For You</h2>
         <div class="card-cont2">
-          <div class="card-dis">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
-            </div>
-          </div>
-          <div class="card-dis">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
-            </div>
-          </div>
-          <div class="card-dis">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
-            </div>
-          </div>
-          <div class="card-dis">
-            <img src="assets/taj-mahal3.jpg" alt="" />
-            <div>
-              <p>Lorem, ipsum.</p>
-              <p>Lorem, ipsum.</p>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="bookings">
-        <div><img src="assets/test-img1.png" alt="" /></div>
-        <div><img src="assets/test-img2.png" alt="" /></div>
-        <div><img src="assets/test-img3.png" alt="" /></div>
       </div>
     </div>
 
@@ -130,3 +108,70 @@
 </html>
 
 <script src="navbar.js"></script>
+<script>
+  let card_cont2 = document.querySelector('.card-cont2')
+  let arr = [
+    {
+      title: "Taj Mahal",
+      img: "assets/taj-mahal3.jpg",
+      info: "lorem lolo",
+      rating: 4.5,
+      price: 16000
+    },
+    {
+      title: "shimla Himalayas Tour",
+      img: "assets/himalya.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+      price: 16564
+    },
+    {
+      title: "Sunderbans Forest Getaway",
+      img: "assets/sundarban.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+      price: 66465
+    },
+    {
+      title: "Tribal Tours Of Chattisgarh",
+      img: "assets/tribe-chattisgarh.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+      price: 545454
+    },
+    {
+      title: "Effil Tower",
+      img: "assets/effil-tower.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+      price: 545454
+    },
+
+    {
+      title: "Sunderbans Forest Getaway",
+      img: "assets/sundarban.jpg",
+      info: "lorem lolo",
+      rating: 3.5,
+      price: 545454
+    }
+  ]
+
+  arr.forEach(element => {
+    let {title , img , info , rating , price} = element
+    let dis = price - Math.round((30/100)*price)
+    
+    card_cont2.innerHTML += `
+    <div class="card-dis">
+      <img src="${img}" alt="" />
+      <div class="offer-name">
+        <h3>${title}</h3>
+        <p>${title}</p>
+        <div class="dis-price">
+          <del>Rs: ${price}</del>
+          <p>Rs: ${dis}</p>  
+        </div>
+
+      </div>
+    </div>`
+  });
+</script>
