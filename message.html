@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/navbar.css" />
+  <!-- <link rel="stylesheet" href="styles/dashboard.css" /> -->
+  <script
+    src="https://kit.fontawesome.com/7a4d6432b5.js"
+    crossorigin="anonymous"
+  ></script>
+  <head>
+    <title>Trip Confirmation</title>
+  </head>
+  <style>
+    body {
+      /* background: rgb(3, 24, 69); */
+    }
+
+    #msg-details {
+      display: grid;
+      grid-template-columns: 300px 1fr 1fr;
+      margin: 100px 30px 30px 100px;
+      /* padding: 30px; */
+      /* padding-bottom: 0; */
+      /* gap: 15px; */
+      min-height: 500px;
+      background: rgb(255, 255, 255);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+    }
+    #msg_parent {
+      background-color: #00adff;
+      padding: 30px 10px;
+      /* border-radius: 37px; */
+    }
+    #msg_parent input {
+      border-radius: 20px;
+      border: none;
+      width: 100%;
+      padding: 5px 10px;
+      margin: 10px 0;
+    }
+    .user-msg-name {
+      background-color: rgb(255, 255, 255);
+      border-bottom: 1px solid rgb(223, 223, 223);
+      padding: 10px;
+      align-items: center;
+      gap: 10px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .user-msg-details {
+      align-items: center;
+      gap: 10px;
+      display: flex;
+    }
+    .user-msg-details p {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    .user-msg-noti {
+      align-items: flex-end;
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+    .user-msg-noti > div {
+      
+      height: 20px;
+      width: 20px;
+      color: white;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .user-msg-name:last-child .notification:last-child{
+      background: red !important;
+    }
+    .user-msg-name img {
+      width: 40px;
+    }
+    #msg-info {
+      background: #e4ffe3;
+    }
+    .message-container {
+      width: 400px;
+    }
+
+    .message-container > * {
+
+      padding: 10px 20px;
+      border-radius: 20px;
+      width: max-content;
+      max-width: 400px;
+    }
+
+    .message-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .attachment-link {
+      color: #065fd4;
+      text-decoration: none;
+    }
+
+    .signature {
+      font-style: italic;
+      margin-top: 20px;
+    }
+
+    #msg-ticket-det,
+    #msg-info,
+    #msg_parent {
+      max-height: 620px;
+      overflow-y: scroll;
+    }
+
+    #msg-details *::-webkit-scrollbar-track {
+      background-color: #ffffff;
+    }
+
+    #msg-details *::-webkit-scrollbar {
+      width: 10px;
+      background-color: #f5f5f5;
+    }
+
+    #msg-details *::-webkit-scrollbar-thumb {
+      background-color: #0ae;
+
+      background-image: -webkit-gradient(
+        linear,
+        0 0,
+        0 100%,
+        color-stop(0.5, rgba(255, 255, 255, 0.2)),
+        color-stop(0.5, transparent),
+        to(transparent)
+      );
+    }
+
+    .hide {
+      display: none;
+    }
+    .show {
+      display: block;
+    }
+    .grid-table {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 10px;
+      margin-bottom: 20px;
+      text-align: left;
+      /* background: rgb(0 173 255); */
+    }
+
+    .grid-table li {
+      list-style: none;
+      /* background: white; */
+      padding: 5px;
+    }
+
+    .grid-table li strong {
+      font-weight: bold;
+    }
+    .ticket-confirm-show {
+      padding: 20px;
+      background: white;
+      /* background-color: #d2ffd9;
+    background: rgb(0 173 255); */
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 12px;
+      color: rgb(12, 12, 12);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      min-height: 600px;
+      /* text-align: center; */
+    }
+    .navbar,
+    .navbar2,
+    .footer-info {
+      background-color: #00adff;
+    }
+    .ticket_user_name:hover {
+      color: red;
+    }
+    .user-logo{
+      height: 40px;
+    }
+    .logo-logo{
+      display: flex;
+      gap: 10px;
+    }
+    .shared-img{
+      width: 100%;
+    }
+    .logo-logo > div > p , .logo-logo > div > img {
+      background-color: #d2ffd9;
+    padding: 8px 20px;
+    margin: 8px 0;
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+  <body>
+    <!-- navbar  -->
+    <nav id="nav_parent" class="navbar"></nav>
+    <div class="navbar2">
+      <p>Menu</p>
+      <div>
+        <a class="tooltip" href="dashboard.html">
+          <img src="assets/most-recent.png" alt="" />
+          <span class="tooltiptext">Dashboard</span>
+        </a>
+        <a class="tooltip" href="message.html">
+          <img src="assets/subscription.png" alt="" />
+          <span class="tooltiptext">My Tickets</span>
+        </a>
+      </div>
+      <p>Library</p>
+      <div>
+        <a class="tooltip" href="#">
+          <img src="assets/star.png" alt="" />
+          <span class="tooltiptext">Favourite</span>
+        </a>
+        <a class="tooltip" href="#">
+          <img src="assets/sms3.png" alt="" />
+          <span class="tooltiptext">Message</span>
+        </a>
+        <a class="tooltip" href="#">
+          <img src="assets/cart_shop.png" alt="" />
+          <span class="tooltiptext">Cart</span>
+        </a>
+      </div>
+      <p>Setting</p>
+      <div>
+        <a class="tooltip" href="#">
+          <img src="assets/sett.png" alt="" />
+          <span class="tooltiptext">Setting</span>
+        </a>
+        <a class="tooltip" href="#">
+          <img src="assets/customer-service.png" alt="" />
+          <span class="tooltiptext">Cusomer Support</span>
+        </a>
+      </div>
+    </div>
+    <!-- navbar  -->
+
+    <div id="msg-details">
+      <div id="msg_parent">
+        <h2>Messages</h2>
+        <input type="text" placeholder="Search" />
+      </div>
+      <div id="msg-info">
+        <div id="trip-conf">
+        </div>
+      </div>
+
+      <div id="msg-ticket-det"></div>
+    </div>
+
+    <!-- footer -->
+    <div class="foot-correct">
+      <div class="footer" id="foot_parent"></div>
+    </div>
+    <!-- footer -->
+  </body>
+</html>
+<script src="navbar.js"></script>
+<script>
+  let confirmation_data_local = JSON.parse(
+    localStorage.getItem("confirmation_data")
+  );
+  let msg_parent = document.getElementById("msg_parent");
+  let msg_ticket_det = document.getElementById("msg-ticket-det");
+  let trip_conf = document.getElementById("trip-conf");
+  function getRandomName(names) {
+    const randomIndex = Math.floor(Math.random() * names.length);
+    return names[randomIndex];
+  }
+  const indianNames = [
+    "Osama",
+    "Neha",
+    "Rohan",
+    "Priya",
+    "Aanya",
+    "Vikram",
+    "Ishaan",
+    "Kavya",
+    "Arjun",
+    "Sneha",
+  ];
+
+  function showMsg(data) {
+    let arr = [];
+    confirmation_data_local.forEach((element) => {
+      let { bill, package_name, timestamp, tourdate, tour_data } = element;
+      let { duration, location, tour, image } = tour_data;
+      const randomName = getRandomName(indianNames);
+      if (!element.guide_name) {
+        element.guide_name = randomName;
+      }
+
+      let name = !element.guide_name ? randomName : element.guide_name;
+
+
+      if (!arr.includes(name)) {
+        msg_parent.innerHTML += `
+        <div class="user-msg-name">
+          <div class="user-msg-details">
+            <img src="assets/man.png">
+            <div>
+            <h4 class="ticket_user_name">${name}</h4>
+            <p>Hi Adil</p>  
+          </div>
+          </div>
+          <div class="user-msg-noti">
+            <p>4:30 PM</p>
+            <div class="notification">1</div>
+            </div>
+            </div>`;
+      }
+      arr.push(name);
+    });
+    localStorage.setItem("confirmation_data", JSON.stringify(data));
+    // data.filter(e => e.guide_name == name)
+    addTicketToChat(data);
+  }
+  showMsg(confirmation_data_local);
+
+  function addTicketToChat(data) {
+    let allTicketForUser = document.querySelectorAll(".ticket_user_name");
+    msg_ticket_det.innerHTML = null;
+    allTicketForUser.forEach((element) => {
+      let filtered_data = data.filter(
+        (ttkt) => ttkt.guide_name == element.innerText
+      );
+
+      filtered_data.forEach((abc) => {
+        let { bill, package_name, timestamp, tourdate, tour_data } = abc;
+        let { duration, location, tour, image, destination } = tour_data;
+
+        trip_conf.innerHTML += `
+        <div class="message-container ${element.innerText} hide">
+
+          <div class="logo-logo">
+            <img class="user-logo" src="assets/man.png">
+            <div>
+              <h4 class="ticket_user_name">${element.innerText}</h4>
+              <p>Hi Adil</p>  
+            </div>
+          </div>
+          <div class="logo-logo">
+            <img class="user-logo" src="assets/man.png">
+            <div>
+              <h4 class="ticket_user_name">${element.innerText}</h4>
+              <p>
+                I hope you're doing well. I wanted to inform you that I'll be your
+                tour guide for your upcoming trip <b>${package_name}</b>. I'm thrilled to have the
+                opportunity to show you around and make your journey memorable.
+              </p>
+            </div>
+          </div>
+          <div class="logo-logo">
+            <img class="user-logo" src="assets/man.png">
+            <div>
+              <h4 class="ticket_user_name">${element.innerText}</h4>
+              <p>
+                To ensure a smooth travel experience, I have attached your trip
+                ticket to this message. Please find it in the
+                <a class="attachment-link" href="#">attachment</a> section.
+              </p>  
+            </div>
+          </div>
+          <div class="logo-logo">
+            <img class="user-logo" src="assets/man.png">
+            <div>
+              <h4 class="ticket_user_name">${element.innerText}</h4>
+              <img class="shared-img" src=${image[0]}>
+            </div>
+          </div>
+            
+            
+            
+          </div>`;
+
+          
+        let div = document.createElement("div");
+        div.classList.add("hide");
+        div.innerHTML = `<div class="${element.innerText} hide">
+      <div class="ticket-confirm-show">
+      <h1>Trip Confirmation</h1>
+      <p>Dear Anil,</p>
+      <p>
+        Great news! I have successfully booked our travel tickets online for our
+        upcoming trip to the <b>${package_name}</b>. Here are the confirmation details:
+      </p>
+      <ul class="grid-table">
+        <li><strong>Destination:</strong></li>
+        <li><span class="destination">${destination}</span></li>
+        <li><strong>Duration:</strong></li>
+        <li><span class="duration">${duration}</span></li>
+        <li><strong>Dates:</strong></li>
+        <li><span class="tour-date">${tourdate}</span></li>
+        <li><strong>Full Name:</strong></li>
+        <li>Mohd Adil</li>
+        <li><strong>Bill Amount:</strong></li>
+        <li>RS: <span class="bill-amount">${bill}</span></li>
+        <li><strong>Nationality:</strong></li>
+        <li>Indian</li>
+        <li><strong>Email Address:</strong></li>
+        <li><span class="email-address">adil123@gmail.com</span></li>
+      </ul>
+      <p>
+        Please keep these details handy for reference. I'm thrilled about
+        exploring the mesmerizing beauty of the <b>${package_name}</b> together and creating
+        wonderful memories.
+      </p>
+      <p>
+        If you have any questions or need further assistance, feel free to reach
+        out to me. I'll be more than happy to help.
+      </p>
+      <p>Looking forward to our amazing trip!</p>
+      <p>Warm regards,<br />${element.innerText}</p>
+    </div>
+      </div>`;
+        msg_ticket_det.innerHTML += div.innerHTML;
+      });
+      element.addEventListener("click", () => {
+        msg_ticket_det.querySelectorAll(`.hide`).forEach((e) => {
+          if (e.className.includes(element.innerText)) {
+            e.classList.add("show");
+          } else {
+            e.classList.remove("show");
+          }
+
+        });
+        trip_conf.querySelectorAll(`.hide`).forEach((e) => {
+          if (e.className.includes(element.innerText)) {
+            e.classList.add("show");
+          } else {
+            e.classList.remove("show");
+          }
+        });
+      });
+    });
+  }
+
+  msg_ticket_det.querySelectorAll(`.hide`)[0].classList.add("show");
+  trip_conf.querySelectorAll(`.hide`)[0].classList.add("show");
+</script>

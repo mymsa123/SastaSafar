@@ -70,6 +70,7 @@
         chosenPackage.innerHTML = null;
     }
     else {
+        let confirmation_data = {}
         fetchPackageData();
 
         function finalizeBooking (){
@@ -87,13 +88,32 @@
                 alert("Please select a date");
             }else{
                 let package_name = document.querySelector('.packageInformation > h3');
+                
                 console.log({
                     package_name : package_name.textContent,
                     tourdate : chooseDate.value,
                     timestamp : String(newBookingDate),
-                    bill : Number(finalCost.textContent)
+                    bill : Number(finalCost.textContent),
                 });
 
+                let trp_confirm = {
+                    package_name : package_name.textContent,
+                    tourdate : chooseDate.value,
+                    timestamp : String(newBookingDate),
+                    bill : Number(finalCost.textContent),
+                    tour_data: confirmation_data
+                }
+                let confirmation_data_local = JSON.parse(localStorage.getItem("confirmation_data"))
+                if (confirmation_data_local) {
+                    
+                    confirmation_data_local.push(trp_confirm)
+                   
+                    localStorage.setItem("confirmation_data" , JSON.stringify(confirmation_data_local))
+                }
+                else{
+                    localStorage.setItem("confirmation_data" , JSON.stringify([trp_confirm]))
+
+                }
                 spinnerOverlay.style.display = 'flex';
 
                 setTimeout(function() {
@@ -118,6 +138,7 @@
                 let data = await res.json();
                 chosenPackage.innerHTML = null;
                 chosenPackage.append(createPackageCard(data));
+                confirmation_data = data
             } catch (error) {
                 console.log(error);
             }

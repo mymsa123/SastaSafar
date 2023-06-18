@@ -3,20 +3,18 @@ body{
 }
 
 #dashboard-page{
-    /* height: 600px; */
     margin-left: 70px;
-    padding: 15px;
+    padding: 30px;
     padding-bottom: 0;
-    grid-template-columns: auto 300px;
     display: grid;
     gap: 15px;
 }
 #dashboard-details{
-    height: calc(100vh - 90px);
     background: lightblue;
     background: rgb(5, 11, 44);
     background: #102565;
     background: #7693fb;
+    background: #0068bd;
     border-radius: 14px;
     padding: 30px;
     color: white;
@@ -31,44 +29,56 @@ body{
     margin-bottom: 5px;
 }
 .card-cont1{
-display: grid;
-grid-template-columns: repeat(3 , calc(33.33% - 16px));
+/* display: grid;
+grid-template-columns: repeat(5 , calc(20% - 26px)); */
 justify-content: space-between;
-height: calc(50% - 12px - 40px);
+/* height: 400px; */
 grid-template-rows: 100%;
 gap: 24px;
 margin-bottom: 24px;
+display: flex;
+flex-wrap: wrap;
+}
+.abcdef{
+    padding: 10px;
+    padding: 10px;
+    background: linear-gradient(45deg, #000000ad, #00000091);
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .card{
-    background: rgb(153, 209, 255);
-    background: rgb(7, 17, 49);
-    border: 1px solid black; 
+    position: relative;
     border-radius: 20px;
-    padding: 25px;
-    /* height: max-content; */
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    width: 242px;
+    flex-grow: 1;
 }
 .card img{
 width: 100%;
-height: 80%;
+height: 90%;
 border-radius: 20px;
 object-fit: cover;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
 }
 .card-cont2{
     display: grid;
-    grid-template-columns: repeat(2 , calc(50% - 12px));
     grid-template-rows: repeat(2, calc(50% - 12px));
-    /* justify-content: space-between; */
-    height: calc(50% - 12px - 50px);
-    gap: 24px;
+    grid-template-columns: repeat(3 , calc(33% - 16px));
+    height: 300px;
+    gap: 32px;
     }
 .card-dis{
     background: rgb(7, 17, 49);
-    border: 1px solid black; 
+    background: #56b3ff;
+    background: #72c0ff;
     border-radius: 20px;
     display: flex;
     padding: 15px;
+    color: #0e1c48;
     gap: 20px;
-    /* height: 10%; */
 }
 .card-dis>img{
     height: 100%;
@@ -77,6 +87,7 @@ object-fit: cover;
 .bookings{
     background: white;
     background: #102565;
+
     border-radius: 14px;
     display: flex;
     flex-direction: column;
@@ -88,3 +99,81 @@ object-fit: cover;
 .bookings>img{
     width: 100%;
 }
+
+.offer-name{
+    width: 100%;
+}
+.dis-price{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dis-price p {
+    color: rgb(155, 0, 0);
+    font-weight: bold;
+}
+
+.navbar , .navbar2{
+    background: #0068bd;
+}
+
+.footer-info{
+    background: #0068bd;
+}
+
+.footer-details p , .footer-details h4{
+    color: white;
+
+}
+.footer .search{
+    background: #72c0ff;
+}
+
+.footer input::placeholder {
+    color: #506575;
+  }
+.footer input {
+    color: #021728;
+  }
+
+  .abcdef p {
+    text-align: center;
+    font-weight: 600;
+  }
+
+.card-dis{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* @media only screen and (max-width: 930px) {
+ 
+ 
+  
+  } */
+
+
+
+  @media only screen and (max-width: 630px) {
+ #dashboard-page{
+    margin-left: 0px;
+  
+}
+
+.footer-info{
+    color: #021728;
+    margin-left: 53px;
+    padding-left: 62px;
+}
+
+.footer{
+    /* margin-left: 43px;  */
+}
+.footer button {
+    padding-left: 0px;
+}
+
+  }
