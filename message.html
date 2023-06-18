@@ -69,7 +69,7 @@
       font-size: 12px;
     }
     .user-msg-noti > div {
-      background: red;
+      
       height: 20px;
       width: 20px;
       color: white;
@@ -77,6 +77,9 @@
       display: flex;
       justify-content: center;
       border-radius: 50%;
+    }
+    .user-msg-name:last-child .notification:last-child{
+      background: red !important;
     }
     .user-msg-name img {
       width: 40px;
@@ -301,14 +304,12 @@
       let { bill, package_name, timestamp, tourdate, tour_data } = element;
       let { duration, location, tour, image } = tour_data;
       const randomName = getRandomName(indianNames);
-      // console.log(randomName);
       if (!element.guide_name) {
         element.guide_name = randomName;
       }
 
       let name = !element.guide_name ? randomName : element.guide_name;
 
-      console.log(arr, name, !arr.includes(name));
 
       if (!arr.includes(name)) {
         msg_parent.innerHTML += `
@@ -322,7 +323,7 @@
           </div>
           <div class="user-msg-noti">
             <p>4:30 PM</p>
-            <div>1</div>
+            <div class="notification">1</div>
             </div>
             </div>`;
       }
@@ -330,7 +331,6 @@
     });
     localStorage.setItem("confirmation_data", JSON.stringify(data));
     // data.filter(e => e.guide_name == name)
-    console.log(data);
     addTicketToChat(data);
   }
   showMsg(confirmation_data_local);
@@ -339,8 +339,6 @@
     let allTicketForUser = document.querySelectorAll(".ticket_user_name");
     msg_ticket_det.innerHTML = null;
     allTicketForUser.forEach((element) => {
-      console.log(data);
-      // console.log(element.innerText);
       let filtered_data = data.filter(
         (ttkt) => ttkt.guide_name == element.innerText
       );
@@ -443,7 +441,6 @@
             e.classList.remove("show");
           }
 
-          console.log(e.className.includes(element.innerText));
         });
         trip_conf.querySelectorAll(`.hide`).forEach((e) => {
           if (e.className.includes(element.innerText)) {
@@ -451,8 +448,6 @@
           } else {
             e.classList.remove("show");
           }
-
-          console.log(e.className.includes(element.innerText));
         });
       });
     });
