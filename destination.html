@@ -99,7 +99,6 @@
     <section id="searchbar">
         <input class="input" id="search" name="text" placeholder="Search..." type="search">
     </section>`
-    // const API = "https://trypot-nation-dkah.onrender.com/packages";
     const API = "https://648977ba5fa58521caafa573.mockapi.io/tours";
     let APIData = JSON.parse(localStorage.getItem('APIData')) || [];
     let content = document.querySelector('#content');
@@ -275,8 +274,6 @@
 
         let detail = card.querySelector('.viewbtn');
         detail.addEventListener('click', () => {
-// <<<<<<< Day5_fw26_039
-//          localStorage.setItem('package_id', ele.id);
             localStorage.setItem('package_id', JSON.stringify(ele));
             window.location.href = "viewDetails.html";
         });
