@@ -33,15 +33,15 @@ fetch(`${baseurl}/tours`)
 
 AddButton.addEventListener("click",()=>{
     let obj={
-        Destination:Destination.value,
+        destination:Destination.value,
         description:Desc.value,
-        price:"$"+Price.value,
+        price:"Rs"+Price.value,
         image:Image.value,
         name:Name.value,
         id:Id.value,
         Size:[8,8.5,9,10,10.5,11,13],
         color:["Black"],
-        Duration:Duration.value
+        duration:Duration.value
     };
     console.log(obj)
    
@@ -73,15 +73,16 @@ GetButton.addEventListener("click",()=>{
     .then(res=>res.json())
     .then(data=>{
         console.log(data)
-        Destination.value=data.Brand;
+        Destination.value=data.destination;
         Name.value=data.title;
         Desc.value=data.description;
-        Price.value=data.price;
+        Price.value="Rs"+data.price;
         Duration.value=data.duration;
         Image.value=data.image;
         updateimage.src=data.image;
+
         showdesti.innerText=data.destination;
-        showname.innerText=data.name;
+        showname.innerText=data.title;
         showdesc.innerText=data.description;
         showprice.innerText=data.price;
 
@@ -96,9 +97,9 @@ GetButton.addEventListener("click",()=>{
 
 UpdateButton.addEventListener("click",()=>{
     let obj={
-        Brand:Brand.value,
+        destination:Destination.value,
         description:Desc.value,
-        price:"$"+Price.value,
+        price:"Rs"+Price.value,
         image:Image.value,
         name:Name.value,
         id:Id.value,
@@ -108,7 +109,7 @@ UpdateButton.addEventListener("click",()=>{
     };
     console.log(obj)
    
-    fetch(`${baseurl}/tourss/${obj.id}`,{
+    fetch(`${baseurl}/tours/${obj.id}`,{
         method:'PATCH',
         headers:{
             'Content-Type':'application/json'
