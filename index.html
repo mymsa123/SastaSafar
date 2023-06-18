@@ -67,8 +67,7 @@
         <h1>Welcome To Sasta Safar</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-          suscipit officiis illo accusantium quasi. Et modi, quis dolores eius
-          commodi dolor quae rem eos! Quos animi corrupti expedita qui officia.
+          suscipit officiis illo accusantium quasi.
         </p>
         <div class="search">
           <input type="text" placeholder="Enter location" />
@@ -81,24 +80,36 @@
       </div>
     </div>
 
-    <div class="header2" id="service-parent"></div>
-
-    <div class="header3">
+    <div class="header2" id="service-parent">
       <div class="service-info">
-        <h4>02</h4>
-        <h2>SPECIAL PACKAGE</h2>
+        <div class="header-titles">
+          <h4>01</h4>
+        <h2>OUR SERVICE</h2>
+        </div>
         <p>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </p>
-        <a href="#" class="service-btn">Learn More</a>
-        <div>
-          <button class="carousel-prev service-btn">Prev</button>
-          <button class="carousel-next service-btn">Next</button>
-        </div>
       </div>
-      <div class="carousel">
-        <div class="carousel-inner" id="package_parent"></div>
+    </div>
+
+    <div class="header3">
+      <div class="service-info">
+        <div class="header-titles">
+          <h4>02</h4>
+        <h2>OUR SERVICE</h2>
+        </div>
+        <p>
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+      </div>
+      <div class="car-slide">
+        <div class="carousel">
+          <div class="carousel-inner" id="package_parent"></div>
+        </div>
+        <button class="carousel-prev service-btn"><i class="fa-solid fa-circle-chevron-left"></i></button>
+        <button class="carousel-next service-btn"><i class="fa-solid fa-circle-chevron-right"></i></button>
       </div>
     </div>
     <!-- pagesection 2-->
@@ -135,7 +146,6 @@
   let service_parent = document.getElementById("service-parent");
 
   function showServices(data) {
-    service_parent.innerHTML = null;
     data.forEach((element) => {
       let { title, img, info } = element;
       console.log(title);
@@ -152,17 +162,7 @@
         </div>`;
       service_parent.append(div);
     });
-    let div = document.createElement("div");
-    div.classList.add("service-info");
-    div.innerHTML = `
-        <h4>01</h4>
-        <h2>OUR SERVICE</h2>
-        <p>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="service-btn">Learn More</a>`;
-    service_parent.append(div);
+    
   }
 
   showServices(data_services);
@@ -246,16 +246,8 @@
                 </div>
                 
                 <div class="star">⭐ ${rating}</div></div>`;
-
-      arr.push(div);
-      if (arr.length == 2) {
-        console.log(arr);
-        arr.forEach((e) => {
-          div_main.append(e);
-        });
-        arr = [];
+          div_main.append(div);
         package_parent.append(div_main);
-      }
     });
   }
 
@@ -272,10 +264,10 @@
     const nextButton = document.querySelector(".carousel-next");
 
     function slideNext() {
-      if (currentIndex === carouselItems.length - 1) {
+      if (currentIndex === carouselItems.length - 2) {
         currentIndex = 0;
       } else {
-        currentIndex = currentIndex + 0.5;
+        currentIndex = currentIndex + 1;
       }
       carouselInner.style.transform = `translateX(-${
         currentIndex * carouselItemWidth
@@ -286,7 +278,7 @@
       if (currentIndex === 0) {
         currentIndex = carouselItems.length - 1;
       } else {
-        currentIndex = currentIndex - 0.5;
+        currentIndex = currentIndex - 1;
       }
       carouselInner.style.transform = `translateX(-${
         currentIndex * carouselItemWidth
